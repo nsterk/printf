@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa_base.c                                     :+:    :+:            */
+/*   base.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 19:24:23 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 15:44:27 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 15:41:50 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+size_t	ft_strlen(const char *s)
+{
+	size_t i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
 
 const size_t	itoa_base_len(long num, size_t divider)
 {
@@ -50,4 +61,19 @@ char		*ft_itoa_base(int num, char *base)
 		len--;
 	}
 	return (str);
+}
+
+int			main(void)
+{
+	int		i;
+	char	*base_2;
+	char	*base_10;
+	char	*base_16;
+
+	base_2 = "01";
+	base_10 = "0123456789";
+	base_16 = "0123456789abcdef";
+	i = 25;
+	printf("%s\n", ft_itoa_base(i, base_2));
+	return (0);
 }
