@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   convert_string.c                                   :+:    :+:            */
+/*   convert_hex.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/09 20:04:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 17:19:08 by nsterk        ########   odam.nl         */
+/*   Created: 2020/11/22 17:14:51 by nsterk        #+#    #+#                 */
+/*   Updated: 2020/11/22 17:49:56 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
 
-t_tab	*convert_string(t_tab *tab)
+t_tab		*convert_hex(t_tab *tab)
 {
-	tab->argument = va_arg(tab->args, char *);
-	tab->specifier = 's';
+	int		i;
+
+	i = va_arg(tab->args, int);
+	if (tab->format[tab->i] == 'x')
+	{
+		tab->specifier = 'x';
+		tab->argument = ft_itoa_base(i, "0123456789abcdef");
+	}
+	if (tab->format[tab->i] == 'X')
+	{
+		tab->specifier = 'X';
+		tab->argument = ft_itoa_base(i, "0123456789ABCDEF");
+	}
+	tab->numerical = 1;
 	return (tab);
 }

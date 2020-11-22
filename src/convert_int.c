@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:25:37 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 16:33:23 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 19:12:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ t_tab	*convert_int(t_tab *tab)
 	int		i;
 	char	*str;
 
+	if (tab->format[tab->i] == 'd')
+		tab->specifier = 'd';
+	if (tab->format[tab->i] == 'i')
+		tab->specifier = 'i';
 	i = va_arg(tab->args, int);
 	if (i < 0)
 		tab->negative = 1;
 	tab->numerical = 1;
-	str = ft_itoa_base(i, "0123456789");
+	str = ft_itoa_base(i, "01234a56789");
 	tab->argument = str;
 	//free(str); //ok dit is nog iest dat later gefixt moet worden want als ik hier free heb ik geen memory leak MAAR dan is er een probleem als ik later tab->argument wil gaan formatten
 	return (tab);

@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/22 15:44:53 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/22 17:14:06 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ PRINTF_PATH	=	./src/
 PRINTF_SRC	=	initialize.c ft_printf.c parse.c \
 				parse_flags.c get_width.c \
 				parse_specifier.c convert_char.c \
-				convert_int.c convert_unsigned_int.c \
+				convert_hex.c convert_int.c \
+				convert_unsigned_int.c \
 				convert_ptr.c convert_string.c \
 				format.c format_padding.c \
 				re_initialize.c print_argument.c

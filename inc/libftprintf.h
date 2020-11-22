@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/21 20:42:39 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 17:14:44 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int				parse(t_tab *tab);
 t_tab			*parse_specifier(t_tab *tab);
 t_tab			*parse_flags(t_tab *tab);
 t_tab			*convert_char(t_tab *tab);
+t_tab			*convert_hex(t_tab *tab);
 t_tab			*convert_int(t_tab *tab);
 t_tab			*convert_unsigned_int(t_tab *tab);
 t_tab			*convert_ptr(t_tab *tab);
