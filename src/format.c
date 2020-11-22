@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 10:46:16 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 20:08:43 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_tab	*format(t_tab *tab)
 {
-	if (tab->width > 0 && ft_strlen(tab->argument) < tab->width)
+	if (tab->width && ft_strlen(tab->argument) < tab->width)
 		format_padding(tab);
 	else
 		tab->padded_argument = ft_strdup(tab->argument);

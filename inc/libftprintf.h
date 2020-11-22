@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 17:14:44 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 20:29:52 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int				ft_printf(const char *format, ...);
 t_tab			*initialize(t_tab *tab);
 t_tab			*re_initialize(t_tab *tab);
 t_tab			*get_width(t_tab *tab);
+t_tab			*get_precision(t_tab *tab);
 int				parse(t_tab *tab);
 t_tab			*parse_specifier(t_tab *tab);
 t_tab			*parse_flags(t_tab *tab);
