@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:29:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 16:40:20 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/22 16:44:03 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_tab	*convert_ptr(t_tab *tab)
 	tab->numerical = 1;
 	str = ft_itoa_base(address, "0123456789abcdef");
 	tab->argument = ft_strjoin("0x10", str);
+	free(str);
 	return (tab);
 }
