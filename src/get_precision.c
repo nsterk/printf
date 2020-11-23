@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 20:28:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/23 10:57:38 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/23 21:20:42 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_tab	*get_precision(t_tab *tab)
 	{
 		tab->precision = va_arg(tab->args, size_t);
 		tab->i++;
-	}
+	} 
 	if (ft_isdigit(tab->format[tab->i]))
 	{
 		end = tab->i;
