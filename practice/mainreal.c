@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 18:45:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 20:52:27 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/23 11:07:29 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int		main(void)
 	char	*str2;
 	char	i;
 
-	str = "testie test";
+	str = "test to the test test";
 	str2 = "en nu?";
-	i = 25;
-	printf("[%.*i]\n", 10, -i);
-	printf("[%-.*i]\n", 10, -i);
+	i = 123;
+	//printf("[%030.*i]\n", 2, -i);
+	printf("[%-.*s]\n", 2, str);
+	//printf("[%-.*i]\n", 10, -i);
 	//printf("[%*10i]\n", 25, i);
 	return (0);
 }
