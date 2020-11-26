@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 21:37:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 23:28:31 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/26 23:52:24 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_tab	*format_padding(t_tab *tab)
 	}
 	else
 		ft_memset(padding_string, ' ', padding_length);
-	
+	if (tab->left_justify)
 	return (tab);
 }
 
