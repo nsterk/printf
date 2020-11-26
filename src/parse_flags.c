@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:12:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 23:37:46 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 00:35:18 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 t_tab	*parse_flags(t_tab *tab)
 {
-	tab->i++;
-	while (ft_strchr(tab->flags, tab->format[tab->i]))
+	tab->format++;
+	while (ft_strchr(tab->flags, *tab->format))
 	{
-		if (tab->format[tab->i] == '-')
+		if (*tab->format == '-')
 		{
 			tab->left_justify = 1;
-			tab->i++;
+			tab->format++;
 		}
-		if (tab->format[tab->i] == '0' && !tab->left_justify)
+		if (*tab->format == '0' && !tab->left_justify)
 		{
 			tab->zero = 1;
-			tab->i++;
+			tab->format++;
 		}
-		if (tab->format[tab->i] == '*' || (ft_isdigit(tab->format[tab->i])
-			&& tab->format[tab->i] != '0'))
+		if (*tab->format == '*' || (ft_isdigit(*tab->format)
+			&& *tab->format != '0'))
 			get_width(tab);
-		if (tab->format[tab->i] == '.')
+		if (*tab->format == '.')
+		{
+			tab->format++;
 			get_precision(tab);
+		}
 	}
-	if (tab->left_justify)
+	if (tab->left_justify || tab->precision)
 		tab->zero = 0;
 	parse_specifier(tab);
 	return (tab);

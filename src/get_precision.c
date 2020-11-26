@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 20:28:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 17:20:07 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 00:02:38 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 t_tab	*get_precision(t_tab *tab)
 {
-	size_t	end;
+	size_t	i;
 	char	*precision_string;
 
-	tab->i++;
-	if (tab->format[tab->i] == '*')
+	if (*tab->format == '*')
 	{
 		tab->precision = va_arg(tab->args, int);
-		tab->i++;
+		tab->format++;
 	}
-	if (ft_isdigit(tab->format[tab->i]) && tab->format[tab->i] != '0')
+	if (ft_isdigit(*tab->format) && *tab->format != '0')
 	{
-		end = tab->i;
-		while (ft_isdigit(tab->format[end]))
-			end++;
-		precision_string = ft_substr(tab->format, tab->i, end - tab->i);
+		i = 0;
+		while (ft_isdigit(tab->format[i]))
+			i++;
+		precision_string = ft_substr(tab->format, 0, i);
 		tab->precision = ft_atoi(precision_string);
 		free(precision_string);
-		tab->i = end;
+		tab->format += i;
 	}
-	if (tab->precision > 0)
-		tab->zero = 0;
-	else
+	if (tab->precision < 0)
 		tab->precision = 0;
 	return (tab);
 }

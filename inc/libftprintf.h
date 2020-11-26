@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 23:36:10 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 00:05:01 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef	struct	s_tab
 	va_list		args;
 	size_t		i;
 	char		*flags;
+	char		*conversion_types;
 	char		*argument;
 	int			left_justify;
 	int			zero;

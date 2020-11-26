@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 11:44:42 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 00:34:59 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 
 int		parse(t_tab *tab)
 {
-	while (tab->format[tab->i] != '\0')
+	while (*tab->format != '\0')
 	{
-		if (tab->format[tab->i] == '%')
-		{
+		if (*tab->format == '%')
 			parse_flags(tab);
-		}
 		else
 		{
-			write(1, &tab->format[tab->i], 1);
+			ft_putchar_fd(*tab->format, 1);
 			tab->ret++;
-			tab->i++;
+			tab->format++;
 		}
 	}
 	return (tab->ret);

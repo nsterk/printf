@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 21:37:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 23:52:24 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 00:38:36 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_tab	*format_padding(t_tab *tab)
 	padding_length = tab->width - ft_strlen(tab->argument);
 	if (tab->negative && tab->zero)
 		padding_length++;
-	padding_string = ft_calloc((padding_length + 1) * sizeof(*padding_string));
+	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
 	if (!padding_string)
 		return (NULL);
 	if (tab->zero)
@@ -35,13 +35,12 @@ t_tab	*format_padding(t_tab *tab)
 	}
 	else
 		ft_memset(padding_string, ' ', padding_length);
-	if (tab->left_justify)
 	return (tab);
 }
 
 
 
-
+/*
 t_tab	*format_padding(t_tab *tab)
 {
 	char	*padding_string;
@@ -77,3 +76,4 @@ t_tab	*format_padding(t_tab *tab)
 	//free(temp);
 	return (tab);
 }
+*/

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_argument.c                                   :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:29:42 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 00:52:34 by nsterk        ########   odam.nl         */
+/*   Created: 2020/10/26 20:09:15 by nsterk        #+#    #+#                 */
+/*   Updated: 2020/11/07 14:29:00 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
-#include <unistd.h>
+#include "libft.h"
 
-int		print_argument(t_tab *tab)
+void	ft_bzero(void *s, size_t n)
 {
-	ft_putstr_fd(tab->argument, 1);
-	tab->ret = tab->ret + (int)ft_strlen(tab->argument);
-	if (tab->numerical || tab->specifier == 'c')
-		free(tab->argument);
-	re_initialize(tab);
-	return (tab->ret);
+	size_t			i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = s;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/26 23:35:43 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/27 00:39:31 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM			=	rm -f
 CFLAGS		=	-Wall -Werror -Wextra -Iinc
 
 LIBFT_PATH	=	./libft/src/
-LIBFT_SRC	= 	ft_atoi.c ft_calloc.c \
+LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_isspace.c ft_isdigit.c \
 				ft_itoa_base.c ft_putchar_fd.c \
 				ft_putnbr_fd.c ft_putstr_fd.c \
