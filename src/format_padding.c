@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 21:37:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/23 11:28:58 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/26 23:28:31 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,43 @@
 
 t_tab	*format_padding(t_tab *tab)
 {
+	char	*temp;
 	char	*padding_string;
 	size_t	padding_length;
 
+	temp = ft_strdup(tab->argument);
+	if (!temp)
+		return (NULL);
+	padding_length = tab->width - ft_strlen(tab->argument);
+	if (tab->negative && tab->zero)
+		padding_length++;
+	padding_string = ft_calloc((padding_length + 1) * sizeof(*padding_string));
+	if (!padding_string)
+		return (NULL);
+	if (tab->zero)
+	{
+		ft_memset(padding_string, '0', padding_length);
+		if (tab->negative)
+			padding_string[0] = '-';
+	}
+	else
+		ft_memset(padding_string, ' ', padding_length);
+	
+	return (tab);
+}
+
+
+
+
+t_tab	*format_padding(t_tab *tab)
+{
+	char	*padding_string;
+	// char	*temp;
+	size_t	padding_length;
+
+	// temp = malloc(sizeof(*temp) * ft_strlen(tab->argument) + 1);
+	// ft_memcpy(temp, tab->argument, ft_strlen(tab->argument) + 1);
+	// free(tab->argument);
 	padding_length = tab->width - ft_strlen(tab->argument);
 	if (tab->zero && !tab->minus && tab->negative)
 	{
@@ -36,9 +70,10 @@ t_tab	*format_padding(t_tab *tab)
 		ft_memset(padding_string, ' ', padding_length);
 	padding_string[padding_length] = '\0';
 	if (tab->minus)
-		tab->padded_argument = ft_strjoin(tab->argument, padding_string);
+		tab->argument = ft_strjoin(temp, padding_string);
 	else
-		tab->padded_argument = ft_strjoin(padding_string, tab->argument);
+		tab->argument = ft_strjoin(padding_string, temp);
 	free(padding_string);
+	//free(temp);
 	return (tab);
 }

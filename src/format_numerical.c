@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 21:37:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/23 16:12:15 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/24 14:32:56 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,34 @@
 
 static t_tab	*format_precision(t_tab *tab)
 {
-	return (tab);
+	int		padding_length;
+	char	*padding_string;
+
+	if (tab->specifier == 's')
+	{
+		tab->argument[tab->precision] = '\0';
+		return (tab);
+	}
+	padding_length = tab->precision - (int)ft_strlen(tab->argument);
+	if (tab->negative)
+	{
+		padding_length++;
+		tab->argument++;
+	}
+	padding_string = malloc(sizeof(*padding_string) * (padding_length + 1));
+	if (!padding_string)
+		return (NULL);
+	ft_memset(padding_string, '0', padding_length);
+	if (tab->negative)
+		padding_string[0] = '-';
 }
 
 static t_tab	*pad_whitespace(t_tab *tab)
 {
 	char	*padding_string;
-	size_t	padding_length;
+	int		padding_length;
 
-	padding_length = tab->width - ft_strlen(tab->argument);
+	padding_length = tab->width - (int)ft_strlen(tab->argument);
 	padding_string = malloc(sizeof(*padding_string) * (padding_length + 1));
 	if (!padding_string)
 		return (NULL);
@@ -37,9 +56,9 @@ static t_tab	*pad_whitespace(t_tab *tab)
 static t_tab	*pad_zero(t_tab *tab)
 {
 	char	*padding_string;
-	size_t	padding_length;
+	int		padding_length;
 
-	padding_length = tab->width - ft_strlen(tab->argument);
+	padding_length = tab->width - (int)ft_strlen(tab->argument);
 	if (tab->negative)
 	{
 		padding_length++;
@@ -58,9 +77,9 @@ static t_tab	*pad_zero(t_tab *tab)
 static t_tab	*format_width(t_tab *tab)
 {
 	char	*padding_string;
-	size_t	padding_length;
+	int		padding_length;
 
-	padding_length = tab->width - ft_strlen(tab->argument);
+	padding_length = tab->width - (int)ft_strlen(tab->argument);
 	if (tab->zero && !tab->minus && tab->negative)
 	{
 		padding_length++;

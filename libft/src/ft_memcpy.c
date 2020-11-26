@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   format.c                                           :+:    :+:            */
+/*   ft_memcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/26 23:13:34 by nsterk        ########   odam.nl         */
+/*   Created: 2020/10/26 20:36:55 by nsterk        #+#    #+#                 */
+/*   Updated: 2020/11/07 14:52:40 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
+#include "libft.h"
 
-t_tab	*format(t_tab *tab)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (tab->precision)
-		format_precision(tab);
-	if ((int)ft_strlen(tab->argument) < tab->width)
-		format_padding(tab);
-	printf("tab->argument end of format: [%s]\n", tab->argument);
-	//print_argument(tab);
-	//printf("tab->padded_argument: [%s]\n", tab->padded_argument);
-	return (tab);
+	unsigned char	*dptr;
+	unsigned char	*sptr;
+	size_t			i;
+
+	if (!dst && !src)
+		return (NULL);
+	dptr = (unsigned char*)dst;
+	sptr = (unsigned char*)src;
+	i = 0;
+	while (i < n)
+	{
+		dptr[i] = sptr[i];
+		i++;
+	}
+	return (dptr);
 }

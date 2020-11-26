@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:00:39 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 16:03:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/26 23:35:16 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 # include <stdlib.h>
 
 int			ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
 int			ft_isdigit(int c);
 int			ft_isspace(int c);
 char		*ft_itoa_base(long num, char *base);
 void		*ft_memset(void *str, int c, size_t n);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
+char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *src);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strcpy(char *dest, const char *src);

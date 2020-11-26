@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 20:37:15 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/26 23:36:10 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef	struct	s_tab
 	const char	*format;
 	va_list		args;
 	size_t		i;
+	char		*flags;
 	char		*argument;
-	int			minus;
+	int			left_justify;
 	int			zero;
-	size_t		width;
-	int			specify_precision;
-	size_t		precision;
+	int			width;
+	int			precision;
 	char		specifier;
 	int			numerical; //is the argument numerical?
 	int			negative; //is the number negative?
@@ -57,6 +57,8 @@ t_tab			*convert_ptr(t_tab *tab);
 t_tab			*convert_string(t_tab *tab);
 t_tab			*format(t_tab *tab);
 t_tab			*format_padding(t_tab *tab);
+t_tab			*format_width(t_tab *tab);
+t_tab			*format_precision(t_tab *tab);
 int				print_argument(t_tab *tab);
 
 #endif
