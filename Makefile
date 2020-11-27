@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/27 02:37:26 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/27 14:51:35 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ PRINTF_SRC	=	initialize.c ft_printf.c \
 				convert_ptr.c convert_string.c \
 				format.c format_padding.c \
 				format_precision.c \
-				re_initialize.c print_argument.c
+				re_initialize.c \
+				print_argument.c print_char.c 
 PRINTF_OBJ	=	$(PRINTF_SRC:%.c=%.o)
 
 PRINTF_OP	= $(PRINTF_OBJ:%=$(PRINTF_PATH)%)

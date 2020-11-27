@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 02:03:25 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 14:51:43 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef	struct	s_tab
 	char		specifier;
 	int			numerical; //is the argument numerical?
 	int			negative; //is the number negative?
-	int			is_padded;
 	int			ret;
 }				t_tab;
 
@@ -60,6 +59,7 @@ t_tab			*format(t_tab *tab);
 t_tab			*format_padding(t_tab *tab);
 t_tab			*format_width(t_tab *tab);
 t_tab			*format_precision(t_tab *tab);
+t_tab			*print_char(t_tab *tab);
 int				print_argument(t_tab *tab);
 
 #endif

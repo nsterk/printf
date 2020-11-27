@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 10:58:14 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 13:06:20 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 14:27:18 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_tab	*format_precision(t_tab *tab)
 	char	*padding_string;
 	char	*temp;
 
-	if (tab->specifier == 's')
-		return (format_string_precision(tab));
 	temp = ft_strdup(tab->argument);
+	if (!temp)
+		return (NULL);
 	free(tab->argument);
 	padding_length = tab->precision - ft_strlen(temp);
 	if (tab->negative)
