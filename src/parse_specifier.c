@@ -6,12 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:03:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 01:03:51 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 16:58:58 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
-#include <unistd.h>
 
 t_tab	*parse_specifier(t_tab *tab)
 {

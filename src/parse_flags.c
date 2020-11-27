@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:12:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 01:50:07 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 15:25:23 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 t_tab	*parse_flags(t_tab *tab)
 {
-	tab->format++;
+	if (*tab->format == '%')
+		return (print_char(tab));
 	if (*tab->format == '-')
 	{
 		tab->left_justify = 1;
 		tab->format++;
 	}
-	if (*tab->format == '0' && !tab->left_justify)
+	if (*tab->format == '0')
 	{
 		tab->zero = 1;
 		tab->format++;

@@ -6,12 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 14:49:16 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 16:59:11 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libftprintf.h>
-#include <unistd.h>
 
 int		parse(t_tab *tab)
 {
@@ -23,11 +22,7 @@ int		parse(t_tab *tab)
 			parse_flags(tab);
 		}
 		else
-		{
-			ft_putchar_fd(*tab->format, 1);
-			tab->ret++;
-			tab->format++;
-		}
+			print_char(tab);
 	}
 	return (tab->ret);
 }
