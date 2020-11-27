@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/27 00:39:31 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/27 02:37:26 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_putnbr_fd.c ft_putstr_fd.c \
 				ft_memcpy.c ft_memset.c \
 				ft_strchr.c ft_strcmp.c ft_strcpy.c \
-				ft_strdup.c ft_strjoin.c ft_strlen.c \
+				ft_strdup.c ft_strjoin.c ft_strlcpy.c \
+				ft_strlen.c \
 				ft_strnlen.c ft_substr.c ft_tolower.c \
 				ft_toupper.c ft_reverse_string.c \
 				ft_unsigned_itoa.c

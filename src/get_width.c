@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:27:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 00:37:28 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 01:14:18 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_tab	*get_width(t_tab *tab)
 	size_t	i;
 	char	*width_string;
 
+	i = 0;
 	if (*tab->format == '*')
 	{
 		tab->format++;
@@ -28,13 +29,15 @@ t_tab	*get_width(t_tab *tab)
 		}
 		return (tab);
 	}
-	i = 0;
-	while (ft_isdigit(tab->format[i]))
-		i++;
-	width_string = ft_substr(tab->format, 0, i);
-	tab->width = ft_atoi(width_string);
-	free(width_string);
-	tab->format += i;
+	if (ft_isdigit(tab->format[i]))
+	{
+		while (ft_isdigit(tab->format[i]))
+			i++;
+		width_string = ft_substr(tab->format, 0, i);
+		tab->width = ft_atoi(width_string);
+		free(width_string);
+		tab->format += i;
+	}
 	return (tab);
 }
 

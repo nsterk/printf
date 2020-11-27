@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:00:39 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 00:39:23 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 02:37:01 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char		*ft_strdup(const char *src);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strcpy(char *dest, const char *src);
 int			ft_strcmp(char *s1, char *s2);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
 size_t		*ft_strnlen(const char *s, size_t maxlen);
 char		*ft_substr(char const *s, unsigned int start, size_t len);

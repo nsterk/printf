@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:03:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 00:06:44 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/27 01:03:51 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ t_tab	*parse_specifier(t_tab *tab)
 		convert_hex(tab);
 	tab->format++;
 	format(tab);
-	//print_argument(tab);
 	return (tab);
 }
