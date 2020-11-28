@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/27 14:49:56 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 16:58:50 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
+#include "libftprintf.h"
 #include <unistd.h>
 
 t_tab	*print_char(t_tab *tab)

@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:34:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/16 19:36:15 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:38:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 /*	Removed checks from original ft_substr relating to size len compared 
 **	to size of s, since I know that when used for printf this won't be an issue.

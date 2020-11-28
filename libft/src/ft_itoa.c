@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 11:03:04 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 14:40:03 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:38:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 #include <stdio.h>
 
 static int		ft_itoalen(long n)

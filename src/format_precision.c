@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 10:58:14 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 13:09:10 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
+#include "libftprintf.h"
 
 static t_tab	*format_string_precision(t_tab *tab)
 {

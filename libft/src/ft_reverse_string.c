@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 19:32:12 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/17 19:34:52 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:38:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_reverse_string(char *str)
 {

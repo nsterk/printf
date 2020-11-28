@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 19:24:23 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 16:36:08 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:38:37 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 #include <stdio.h>
 
 static int	itoa_base_len(long num, int divider)

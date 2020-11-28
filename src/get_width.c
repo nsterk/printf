@@ -6,11 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:27:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 01:14:18 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libftprintf.h>
+#include "libftprintf.h"
 
 t_tab	*get_width(t_tab *tab)
 {

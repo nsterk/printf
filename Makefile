@@ -6,11 +6,9 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/28 14:39:27 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/28 17:44:52 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
-# put both header files in a folder called 'inc' (not includes)
 
 NAME		=	libftprintf.a
 HEADER		=	libftprintf.h
