@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 14:31:24 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:47:44 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static t_tab	*format_string_precision(t_tab *tab)
 
 int			format(t_tab *tab)
 {
-	return (tab->ret);
 	if (tab->precision >= 0)
 	{
 		if (!ft_strcmp(tab->argument, "0") && tab->precision == 0)
