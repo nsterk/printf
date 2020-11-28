@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:03:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 13:32:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:46:20 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_tab	*parse_specifier(t_tab *tab)
 	if (*tab->format == 'x' || *tab->format == 'X')
 		convert_hex(tab);
 	tab->format++;
-	// format(tab);
+	format(tab);
 	return (tab);
 }

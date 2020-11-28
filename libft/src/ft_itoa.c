@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 11:03:04 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/21 19:48:43 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:40:03 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ char			*ft_itoa(int n)
 	int		len;
 	char	*rstr;
 
-	//if (base < 2 || base > 16)
-	//	return (0);
 	long_n = (long)n;
 	len = ft_itoalen(long_n);
 	rstr = (char *)malloc(sizeof(*rstr) * (len + 1));

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:00:39 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 02:37:01 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:39:55 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_isdigit(int c);
 int			ft_isspace(int c);
+char		*ft_itoa(int n);
 char		*ft_itoa_base(long num, char *base);
 void		*ft_memset(void *str, int c, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);

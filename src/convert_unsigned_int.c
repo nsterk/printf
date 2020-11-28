@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 10:51:11 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 11:13:05 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:45:56 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_tab	*convert_unsigned_int(t_tab *tab)
 	if (!tab->argument)
 		return (NULL);
 	tab->numerical = 1;
-	tab->precision = 1;
 	tab->specifier = 'u';
 	return (tab);
 }
