@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:25:37 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 14:21:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 11:11:02 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@ t_tab	*convert_int(t_tab *tab)
 	i = va_arg(tab->args, int);
 	if (i < 0)
 		tab->negative = 1;
-	tab->numerical = 1;
 	str = ft_itoa_base(i, "0123456789");
+	if (!str)
+		return (NULL);
 	tab->argument = ft_strdup(str);
 	if (!tab->argument)
 		return (NULL);
 	free(str);
+	tab->numerical = 1;
+	tab->precision = 1;
 	return (tab);
 }

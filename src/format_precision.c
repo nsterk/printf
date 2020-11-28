@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 10:58:14 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 19:03:32 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 13:09:10 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,40 +67,15 @@ static t_tab	*format_num_precision(t_tab *tab)
 	return (tab);
 }
 
-/*
-static t_tab	*format_num_precision_neg(t_tab *tab)
-{
-	size_t	padding_length;
-	char	*padding_string;
-	char	*temp;
-
-	temp = ft_strdup(tab->argument);
-	free(tab->argument);
-	if (!temp)
-		return (NULL);
-	padding_length = (tab->precision - ft_strlen(temp)) + 2;
-	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
-	if (!padding_string)
-		return (NULL);
-	ft_memset(padding_string, '0', padding_length - 1);
-	if (tab->negative)
-	{
-		padding_string[0] = '-';
-		tab->argument = ft_strjoin(padding_string, temp + 1);
-	}
-	else
-		tab->argument = ft_strjoin(padding_string, temp);
-	tab->negative = 0;
-	free(padding_string);
-	free(temp);
-	return (tab);
-	return (tab);
-}*/
-
 t_tab			*format_precision(t_tab *tab)
 {
-	if (tab->specifier == 's' && tab->precision < (int)ft_strlen(tab->argument))
-		format_string_precision(tab);
+	if (tab->specifier == 's')
+	{
+		if (tab->precision < (int)ft_strlen(tab->argument))
+			return (format_string_precision(tab));
+		else
+			return (tab);
+	}
 	else if (tab->precision >= (int)ft_strlen(tab->argument))
 		format_num_precision(tab);
 	return (tab);

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 17:14:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 17:49:56 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 11:09:47 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_tab		*convert_hex(t_tab *tab)
 		tab->specifier = 'X';
 		tab->argument = ft_itoa_base(i, "0123456789ABCDEF");
 	}
+	tab->precision = 1;
 	tab->numerical = 1;
 	return (tab);
 }

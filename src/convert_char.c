@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:26:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/22 17:18:43 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 11:15:56 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ t_tab	*convert_char(t_tab *tab)
 	int c;
 
 	c = va_arg(tab->args, int);
-	tab->argument = malloc(sizeof(char) * 2);
-	tab->argument[0] = c;
-	tab->argument[1] = '\n';
+	tab->argument = ft_calloc(2, sizeof(char));
+	if (!tab->argument)
+		return (NULL);
+	ft_memset(tab->argument, c, 1);
 	tab->specifier = 'c';
 	return (tab);
 }

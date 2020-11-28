@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/27 16:59:21 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 14:30:11 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(void)
 	//ft_printf("[%10.*s]\n", 3, str);
 	//ret = ft_printf("hoiii \n[%-*.3s]\n", 10, str);
 	str = NULL;
-	ret = ft_printf("hoiii \n[%-.3s]\n", str);
+	ret = ft_printf("hoiii \n[%-.0i]\n", 0);
 	// printf("ret: %i\n", ret);
 	// ret = printf("hoiii \n[%-.3s]\n", str);
 	// printf("ret: %i\n", ret);
