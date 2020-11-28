@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/11/28 17:44:52 by nsterk        ########   odam.nl          #
+#    Updated: 2020/11/28 21:13:08 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_strlen.c \
 				ft_strnlen.c ft_substr.c ft_tolower.c \
 				ft_toupper.c ft_reverse_string.c \
-				ft_unsigned_itoa.c
+				ft_unsigned_itoa_base.c
 LIBFT_OBJ	=	$(LIBFT_SRC:%.c=%.o)
 
 PRINTF_PATH	=	./src/

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 10:51:11 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 21:13:25 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_tab	*convert_unsigned_int(t_tab *tab)
 {
-	long u;
+	unsigned int ui;
 
-	u = va_arg(tab->args, long);
-	tab->argument = ft_itoa_base(u, "0123456789");
+	ui = va_arg(tab->args, unsigned int);
+	tab->argument = ft_unsigned_itoa_base(ui, "0123456789");
 	if (!tab->argument)
 		return (NULL);
 	tab->numerical = 1;
