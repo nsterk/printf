@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 10:58:14 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 22:12:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ static t_tab	*format_string_precision(t_tab *tab)
 
 static char		*make_padding(t_tab *tab)
 {
-	size_t	padding_length;
+	int		padding_length;
 	char	*padding_string;
 
-	padding_length = tab->precision - ft_strlen(tab->argument);
+	padding_length = tab->precision - (int)ft_strlen(tab->argument);
 	if (tab->negative)
 		padding_length += 2;
 	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
 	if (!padding_string)
 		return (NULL);
-	ft_memset(padding_string, '0', padding_length - 1);
+	ft_memset(padding_string, '0', padding_length);
 	if (tab->negative)
 		padding_string[0] = '-';
 	return (padding_string);
@@ -50,6 +50,8 @@ static t_tab	*format_num_precision(t_tab *tab)
 	char	*padding_string;
 	char	*temp;
 
+	// printf("tab->precision: %i\n", tab->precision);
+	// printf("tab->argument: [%s] strlen argument: %zu\n", tab->argument, ft_strlen(tab->argument));
 	padding_string = make_padding(tab);
 	if (!padding_string)
 		return (NULL);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   hugemain.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 20:18:47 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 22:13:59 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,8 +256,44 @@ int		main(void)
 	ret2 = printf("[%-*i]\n", -5, i);
 	if (ret != ret2)
 		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
-
-// printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
-
+	/* ONLY HEX CONVERSION */
+	printf("\e[0;33monly hex conversion\e[0m\n");
+	printf("\e[0;36mi = 8432\e[0m\n");
+	i = 8432;
+	ret = ft_printf("[%x] [%X] [%x] [%X]\n", i, i, -i, -i);
+	ret2 = printf("[%x] [%X] [%x] [%X]\n", i, i, -i, -i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+		printf("\e[0;33monly hex conversion\e[0m\n");
+	/* width specified */
+	printf("\e[0;33micm width specified\e[0m\n");
+	ret = ft_printf("[%10x] [%2X] [%*x] [%*X]\n", i, i, 10, -i, -10, -i);
+	ret2 = printf("[%10x] [%2X] [%*x] [%*X]\n", i, i, 10, -i, -10, -i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	/* - flag icm width*/
+	printf("\e[0;33m-flag icm width\e[0m\n");
+	ret = ft_printf("[%-10x] [%X] [%x] [%X]\n", i, i, -i, -i);
+	ret2 = printf("[%-10x] [%X] [%x] [%X]\n", i, i, -i, -i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	printf("\e[0;33m0flag icm width\e[0m\n");
+	ret = ft_printf("mine:	[%010x] [%0*X] [%015x] [%010X]\n", i, -10, i, -i, -i);
+	ret2 = printf("real:	[%010x] [%0*X] [%015x] [%010X]\n", i, -10, i, -i, -i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	i = 0;
+	printf("\e[0;36mi = 0\e[0m\n");
+	ret = ft_printf("mine:	[%010x] [%0*x]\n", i, -10, i);
+	ret2 = printf("real:	[%010x] [%0*x]\n", i, -10, i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	printf("\e[0;33mspecifying precision\e[0m\n");
+	printf("\e[0;36mi = 8432\e[0m\n");
+	i = 8432;
+	ret = ft_printf("[%0.10i] [%0.*i]\n", i, -10, i);
+	ret2 = printf("[%0.10i] [%0.*i]\n", i, -10, i);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
 	return (0);
 }

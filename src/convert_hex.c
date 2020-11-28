@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 17:14:51 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 17:46:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/28 21:18:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 t_tab		*convert_hex(t_tab *tab)
 {
-	int		i;
+	unsigned int	ui;
 
-	i = va_arg(tab->args, int);
-	if (tab->format[tab->i] == 'x')
+	ui = va_arg(tab->args, unsigned int);
+	if (*tab->format == 'x')
 	{
 		tab->specifier = 'x';
-		tab->argument = ft_itoa_base(i, "0123456789abcdef");
+		tab->argument = ft_unsigned_itoa_base(ui, "0123456789abcdef");
 	}
-	if (tab->format[tab->i] == 'X')
+	if (*tab->format == 'X')
 	{
 		tab->specifier = 'X';
-		tab->argument = ft_itoa_base(i, "0123456789ABCDEF");
+		tab->argument = ft_unsigned_itoa_base(ui, "0123456789ABCDEF");
 	}
 	tab->numerical = 1;
 	return (tab);
