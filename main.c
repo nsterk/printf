@@ -23,7 +23,6 @@ int		main(void)
 	str = "im the dog who gets beat";
 	i = 8432;
 
-	ret = ft_printf("[%0.10i] [%0.*i]\n", i, -10, i);
 	ret = ft_printf("[%c]", 0);
 	printf("\nret my printf: %i\n", ret);
 	ret = printf("[%c]", 0);
