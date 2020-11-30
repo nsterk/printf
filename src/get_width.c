@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:27:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 17:14:20 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/30 19:54:40 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ t_tab	*get_width(t_tab *tab)
 			tab->left_justify = 1;
 			tab->width *= -1;
 		}
-		return (tab);
 	}
-	if (ft_isdigit(tab->format[i]))
+	else if (ft_isdigit(tab->format[i]))
 	{
 		while (ft_isdigit(tab->format[i]))
 			i++;

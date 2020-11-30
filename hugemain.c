@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/29 20:36:55 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/30 18:40:37 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,7 @@ int		main(void)
 	ret2 = printf("[%-10x] [%X] [%x] [%X]\n", i, i, -i, -i);
 	if (ret != ret2)
 		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	/* 0flag icm width */
 	printf("\e[0;33m0flag icm width\e[0m\n");
 	ret = ft_printf("mine:	[%010x] [%0*X] [%015x] [%010X]\n", i, -10, i, -i, -i);
 	ret2 = printf("real:	[%010x] [%0*X] [%015x] [%010X]\n", i, -10, i, -i, -i);
