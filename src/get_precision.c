@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/22 20:28:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 15:34:10 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/11/30 18:36:09 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_tab	*get_precision(t_tab *tab)
 		free(precision_string);
 		tab->format += i;
 	}
+	if (tab->precision < 0)
+		tab->precision = 0;
 	return (tab);
 }
