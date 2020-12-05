@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 21:37:07 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 17:47:58 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/05 11:05:03 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ t_tab	*format_padding(t_tab *tab)
 	if (tab->left_justify)
 		tab->argument = ft_strjoin(temp, padding_string);
 	else
-		tab->argument = ft_strjoin(padding_string, temp);
+	{
+		if (tab->negative)
+			tab->argument = ft_strjoin(padding_string, temp + 1);
+		else
+			tab->argument = ft_strjoin(padding_string, temp);
+	}
 	free(padding_string);
 	return (tab);
 }
