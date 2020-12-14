@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 20:28:43 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 21:16:23 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ t_tab	*get_precision(t_tab *tab)
 	return (tab);
 }
 
-t_tab	*parse_flags(t_tab *tab)
+int		parse_flags(t_tab *tab)
 {
-	// if (*tab->format == '%')
-	// 	return (print_char(tab));
+	if (*tab->format == '%')
+		return (print_char(tab));
 	if (*tab->format == '-')
 	{
 		tab->left_justify = 1;
@@ -93,7 +93,7 @@ t_tab	*parse_flags(t_tab *tab)
 	if (tab->left_justify || tab->precision_bool)
 		tab->zero = 0;
 	parse_specifier(tab);
-	return (tab);
+	return (tab->ret);
 }
 
 t_tab	*parse_specifier(t_tab *tab)
@@ -121,15 +121,13 @@ int		parse(t_tab *tab)
 {
 	while (*tab->format)
 	{
-		if (*tab->format == '%' && tab->format[1] != '%')
+		if (*tab->format == '%')
 		{
 			tab->format++;
-			parse_flags(tab);
-			//parse_specifier(tab);
-			//format(tab);
+			tab->ret = parse_flags(tab);
 		}
 		else
-			print_char(tab);
+			tab->ret = print_char(tab);
 	}
 	return (tab->ret);
 }

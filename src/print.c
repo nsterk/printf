@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 20:26:03 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 21:14:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int		print_argument(t_tab *tab)
 	return (tab->ret);
 }
 
-t_tab	*print_char(t_tab *tab)
+int		print_char(t_tab *tab)
 {
 	write(1, tab->format, 1);
 	tab->ret++;
 	tab->format++;
-	return (tab);
+	return (tab->ret);
 }

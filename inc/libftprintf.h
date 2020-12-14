@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 13:19:48 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 21:15:32 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef	struct	s_tab
 	int			precision;
 	int			precision_bool;
 	char		specifier;
-	int			skip; //if prec = 0 && value of numerical argument = 0, skip printing; only free and re_initialze
 	int			numerical; //is the argument numerical?
 	int			negative; //is the number negative?
 	int			ret;
@@ -51,7 +50,7 @@ t_tab			*get_width(t_tab *tab);
 t_tab			*get_precision(t_tab *tab);
 int				parse(t_tab *tab);
 t_tab			*parse_specifier(t_tab *tab);
-t_tab			*parse_flags(t_tab *tab);
+int				parse_flags(t_tab *tab);
 t_tab			*convert_char(t_tab *tab);
 t_tab			*convert_hex(t_tab *tab);
 t_tab			*convert_int(t_tab *tab);
@@ -62,7 +61,8 @@ int				format(t_tab *tab);
 t_tab			*format_padding(t_tab *tab);
 t_tab			*format_width(t_tab *tab);
 t_tab			*format_precision(t_tab *tab);
-t_tab			*print_char(t_tab *tab);
+int				print_char(t_tab *tab);
 int				print_argument(t_tab *tab);
+void			print_argument_char(t_tab *tab);
 
 #endif
