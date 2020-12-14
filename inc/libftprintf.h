@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 12:32:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 13:19:48 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct	s_tab
 	int			zero;
 	int			width;
 	int			precision;
+	int			precision_bool;
 	char		specifier;
 	int			skip; //if prec = 0 && value of numerical argument = 0, skip printing; only free and re_initialze
 	int			numerical; //is the argument numerical?
