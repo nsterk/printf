@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 13:21:15 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 16:14:52 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_tab	*get_precision(t_tab *tab)
 	{
 		tab->precision = va_arg(tab->args, int);
 		tab->format++;
+		if (tab->precision < 0)
+			return (tab);
 	}
 	else if (ft_isdigit(*tab->format))
 	{
@@ -60,6 +62,8 @@ t_tab	*get_precision(t_tab *tab)
 		free(precision_string);
 		tab->format += i;
 	}
+	if (tab->precision < 0)
+		tab->precision = 0;
 	tab->precision_bool = 1;
 	return (tab);
 }
@@ -86,7 +90,7 @@ t_tab	*parse_flags(t_tab *tab)
 		tab->format++;
 		get_precision(tab);
 	}
-	if (tab->left_justify || tab->precision >= 0)
+	if (tab->left_justify || tab->precision_bool)
 		tab->zero = 0;
 	parse_specifier(tab);
 	return (tab);

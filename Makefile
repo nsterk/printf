@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/14 13:14:11 by nsterk        ########   odam.nl          #
+#    Updated: 2020/12/14 16:36:34 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ LIBFT_OBJ	=	$(LIBFT_SRC:%.c=%.o)
 PRINTF_PATH	=	./src/
 PRINTF_SRC	=	initialize.c ft_printf.c \
 				parse.c format.c \
-				get_width.c get_precision.c \
 				convert_alpha.c convert_num.c \
 				re_initialize.c print.c 
 PRINTF_OBJ	=	$(PRINTF_SRC:%.c=%.o)
