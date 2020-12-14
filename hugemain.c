@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 19:19:17 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 21:31:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,7 +319,11 @@ int		main(void)
 	ret2 = printf("real:	[%.5s] [%.*s] [%.s]\n", str, -5, str, str);
 	if (ret != ret2)
 		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	
 	/* CHARS ONLY */
+	
+	/* CRAPPY SHIT IN FORMAT STRING */
+
 	
 	return (0);
 }
