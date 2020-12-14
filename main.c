@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 20:20:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 19:59:02 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 13:14:53 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int		main(void)
 	int		ret2;
 
 	str = "im the dog who gets beat";
-	i = 0;
+	i = 1;
 
 	// ret = ft_printf("[%.*i]\n", -50, i);
 	// ret2 = printf("[%.*i]\n", -50, i);  
 	
-	i = 0;
+	i = 1;
 	ret = ft_printf("mine:	[%010x] [%0*x]\n", i, -10, i);
 	ret2 = printf("real:	[%010x] [%0*x]\n", i, -10, i);
 	if (ret != ret2)
