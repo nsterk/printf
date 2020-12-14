@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 18:40:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 19:19:17 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(void)
 	int ret;
 	int ret2;
 
-	str = "abcdefg";
+	str = "i'm the dog who gets beat";
 
 	/* INTEGERS ONLY */
 	/* NO FLAGS */
@@ -301,5 +301,25 @@ int		main(void)
 	ret2 = printf("[%0.10i] [%0.*i]\n", i, -10, i);
 	if (ret != ret2)
 		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+
+	/* STRINGS ONLY */
+	// NO FLAGS
+	printf("\e[0;33no flags\e[0m\n");
+	ret = ft_printf("[%s]\n", str);
+	ret2 = printf("[%s]\n", str);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	//str & str + 5
+	ret = ft_printf("[%s] [%s]\n", str, str + 5);
+	ret2 = printf("[%s] [%s]\n", str, str + 5);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	// flaggiewaggies
+	ret = ft_printf("mine:	[%.5s] [%.*s] [%.s]\n", str, -5, str, str);
+	ret2 = printf("real:	[%.5s] [%.*s] [%.s]\n", str, -5, str, str);
+	if (ret != ret2)
+		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	/* CHARS ONLY */
+	
 	return (0);
 }

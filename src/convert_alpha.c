@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:02:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 13:03:17 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 20:31:31 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_tab	*convert_string(t_tab *tab)
 	
 	tab->specifier = 's'; 
 	temp = va_arg(tab->args, char *);
-	if (tab->precision < 0)
+	if (!tab->precision_bool)
 	{
 		if (!temp)
 			tab->argument = ft_strdup("(null)");
@@ -42,8 +42,6 @@ t_tab	*convert_char(t_tab *tab)
 	int c;
 
 	c = va_arg(tab->args, int);
-	if (c == 0 && tab->width < 2)
-		tab->ret++;
 	tab->argument = ft_calloc(2, sizeof(unsigned char));
 	if (!tab->argument)
 		return (NULL);

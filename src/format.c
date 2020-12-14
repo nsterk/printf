@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 16:35:57 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 20:21:31 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ t_tab	*format_padding(t_tab *tab)
 	char	*padding_string;
 	size_t	padding_length;
 
-	// printf("tab->argument: [%s]\ntab->precision: %i\n", tab->argument, tab->precision);
 	temp = ft_strdup(tab->argument);
 	free(tab->argument);
 	if (!temp)
@@ -132,7 +131,7 @@ int			format(t_tab *tab)
 		else
 			format_precision(tab);
 	}
-	if ((int)ft_strlen(tab->argument) < tab->width)
+	if ((int)ft_strlen(tab->argument) < tab->width && tab->specifier != 'c')
 		format_padding(tab);
 	print_argument(tab);
 	return (tab->ret);

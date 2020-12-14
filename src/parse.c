@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 16:14:52 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 20:28:43 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_tab	*parse_specifier(t_tab *tab)
 
 int		parse(t_tab *tab)
 {
-	while (*tab->format != '\0')
+	while (*tab->format)
 	{
 		if (*tab->format == '%' && tab->format[1] != '%')
 		{

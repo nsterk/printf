@@ -6,16 +6,49 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 13:13:48 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/14 20:26:03 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
 
+void		print_argument_char(t_tab *tab)
+{
+	int i;
+
+	i = 1;
+	if (tab->width > 1)
+	{
+		if (tab->left_justify)
+		{
+			write(1, tab->argument, 1);
+			while (i < tab->width)
+			{
+				write(1, &" ", 1);
+				i++;
+			}
+		}
+		else
+		{
+			while (i < tab->width)
+			{
+				write(1, &" ", 1);
+				i++;
+			}
+			write(1, tab->argument, 1);
+		}
+	}
+	else
+		write(1, tab->argument, 1);
+	tab->ret += i;
+}
+
 int		print_argument(t_tab *tab)
 {
-	if (!tab->skip)
+	if (tab->specifier == 'c')
+		print_argument_char(tab);
+	else
 	{
 		ft_putstr_fd(tab->argument, 1);
 		tab->ret += (int)ft_strlen(tab->argument);
@@ -27,8 +60,7 @@ int		print_argument(t_tab *tab)
 
 t_tab	*print_char(t_tab *tab)
 {
-	//write(1, &tab->format, 1);
-	ft_putchar_fd(*tab->format, 1);
+	write(1, tab->format, 1);
 	tab->ret++;
 	tab->format++;
 	return (tab);
