@@ -6,15 +6,17 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/14 16:36:34 by nsterk        ########   odam.nl          #
+#    Updated: 2020/12/16 16:31:22 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
+
+# dont forget to remove -g in CFLAGS 
 
 NAME		=	libftprintf.a
 HEADER		=	libftprintf.h
 CC			=	gcc
 RM			=	rm -f
-CFLAGS		=	-Wall -Werror -Wextra -Iinc
+CFLAGS		=	-Wall -Werror -Wextra -g -Iinc
 
 LIBFT_PATH	=	./libft/src/
 LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
@@ -35,7 +37,7 @@ PRINTF_PATH	=	./src/
 PRINTF_SRC	=	initialize.c ft_printf.c \
 				parse.c format.c \
 				convert_alpha.c convert_num.c \
-				re_initialize.c print.c 
+				re_initialize.c print.c
 PRINTF_OBJ	=	$(PRINTF_SRC:%.c=%.o)
 
 PRINTF_OP	= $(PRINTF_OBJ:%=$(PRINTF_PATH)%)
@@ -50,6 +52,10 @@ $(NAME):	$(O_FILES)
 
 %.o: %.c	$(HEADER)
 		$(CC) -c $(CFLAGS) -o $@ $<
+
+test: re
+		$(CC) $(CFLAGS) main.c libftprintf.a -o printf
+		./printf
 
 clean:
 		$(RM) $(O_FILES)

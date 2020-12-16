@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 11:03:04 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 15:05:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 15:13:08 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		ft_itoalen(long n)
 		len = 1;
 	if (n < 0)
 		len++;
-	while (n != 0)
+	while (n)
 	{
 		len++;
 		n /= 10;

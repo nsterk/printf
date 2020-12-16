@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:32:00 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/15 14:09:25 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 15:33:45 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int		ft_printf(const char *format, ...)
 	tab->format = format;
 	tab = initialize(tab);
 	va_start(tab->args, format);
-	tab->ret = parse(tab);
+	ret = parse(tab);
 	va_end(args);
-	ret = tab->ret;
 	free(tab);
 	return (ret);
 }

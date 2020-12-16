@@ -4,13 +4,14 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
+	
 		{
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "${workspaceFolder}/a.out",
-			"args": [],
-			"cwd": "${workspaceFolder}"
+			"program": "/Users/NaomiSterk/codam/in progress/printf",
+			"args": ["/Users/NaomiSterk/codam/in progress/printf/src", "/Users/NaomiSterk/codam/in progress/printf/libft/src"],
+			"cwd": "/Users/NaomiSterk/codam/in progress/"
 		}
 	]
 }

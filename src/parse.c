@@ -6,13 +6,13 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 15:01:22 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 17:36:37 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_tab	*get_width(t_tab *tab)
+int		get_width(t_tab *tab)
 {
 	size_t	i;
 	char	*width_string;
@@ -33,14 +33,16 @@ t_tab	*get_width(t_tab *tab)
 		while (ft_isdigit(tab->format[i]))
 			i++;
 		width_string = ft_substr(tab->format, 0, i);
+		if (!width_string)
+			return (-1);
 		tab->width = ft_atoi(width_string);
 		free(width_string);
 		tab->format += i;
 	}
-	return (tab);
+	return (tab->ret);
 }
 
-t_tab	*get_precision(t_tab *tab)
+int		get_precision(t_tab *tab)
 {
 	size_t	i;
 	char	*precision_string;
@@ -50,7 +52,7 @@ t_tab	*get_precision(t_tab *tab)
 		tab->precision = va_arg(tab->args, int);
 		tab->format++;
 		if (tab->precision < 0)
-			return (tab);
+			return (tab->ret);
 	}
 	else if (ft_isdigit(*tab->format))
 	{
@@ -58,14 +60,18 @@ t_tab	*get_precision(t_tab *tab)
 		while (ft_isdigit(tab->format[i]))
 			i++;
 		precision_string = ft_substr(tab->format, 0, i);
+		if (!precision_string)
+			return (-1);
 		tab->precision = ft_atoi(precision_string);
 		free(precision_string);
+		if (!tab->precision)
+			return (-1);
 		tab->format += i;
 	}
 	if (tab->precision < 0)
 		tab->precision = 0;
 	tab->precision_bool = 1;
-	return (tab);
+	return (tab->ret);
 }
 
 void	parse_zero_minus(t_tab *tab)
@@ -109,17 +115,19 @@ int		parse_flags(t_tab *tab)
 	return (tab->ret);
 }
 
-t_tab	*parse_specifier(t_tab *tab)
+int		parse_specifier(t_tab *tab)
 {
 	if (!ft_strchr(tab->conversion_types, *tab->format))
 	{
 		tab->format++;
-		return (tab);
+		return (tab->ret);
 	}
 	if (*tab->format == 'i' || *tab->format == 'd')
-		convert_int(tab);
+		if (convert_int(tab) < 0)
+			return (-1);
 	if (*tab->format == 'u')
-		convert_unsigned_int(tab);
+		if (convert_unsigned_int(tab) < 0)
+			return (-1);
 	if (*tab->format == 'c' || *tab->format == '%')
 		convert_char(tab);
 	if (*tab->format == 's')
@@ -130,7 +138,7 @@ t_tab	*parse_specifier(t_tab *tab)
 		convert_hex(tab);
 	tab->format++;
 	format(tab);
-	return (tab);
+	return (tab->ret);
 }
 
 int		parse(t_tab *tab)
@@ -140,7 +148,8 @@ int		parse(t_tab *tab)
 		if (*tab->format == '%')
 		{
 			tab->format++;
-			tab->ret = parse_flags(tab);
+			if (parse_flags(tab) < 0)
+				return (-1);
 		}
 		else
 			tab->ret = print_char(tab);
