@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 21:16:23 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/15 17:58:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,16 @@ t_tab	*get_precision(t_tab *tab)
 	return (tab);
 }
 
-int		parse_flags(t_tab *tab)
+void	parse_zero_minus(t_tab *tab)
 {
-	if (*tab->format == '%')
-		return (print_char(tab));
+	if (*tab->format == '-' || *tab->format == '0')
+	{
+		if (*tab->format == '-')
+			tab->left_justify = 1;
+		else
+			tab->zero = 1;
+		tab->format++;
+	}
 	if (*tab->format == '-')
 	{
 		tab->left_justify = 1;
@@ -82,6 +88,13 @@ int		parse_flags(t_tab *tab)
 		tab->zero = 1;
 		tab->format++;
 	}
+}
+
+int		parse_flags(t_tab *tab)
+{
+	if (*tab->format == '%')
+		return (print_char(tab));
+	parse_zero_minus(tab);
 	if (*tab->format == '*' || (ft_isdigit(*tab->format)
 		&& *tab->format != '0'))
 		get_width(tab);
@@ -99,12 +112,15 @@ int		parse_flags(t_tab *tab)
 t_tab	*parse_specifier(t_tab *tab)
 {
 	if (!ft_strchr(tab->conversion_types, *tab->format))
-		return (NULL);
+	{
+		tab->format++;
+		return (tab);
+	}
 	if (*tab->format == 'i' || *tab->format == 'd')
 		convert_int(tab);
 	if (*tab->format == 'u')
 		convert_unsigned_int(tab);
-	if (*tab->format == 'c')
+	if (*tab->format == 'c' || *tab->format == '%')
 		convert_char(tab);
 	if (*tab->format == 's')
 		convert_string(tab);

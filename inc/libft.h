@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/27 11:00:39 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/30 15:12:46 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 13:25:32 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_reverse_string(char *str);
 int			*ft_tolower(int c);
 int			ft_toupper(int c);
-char		*ft_unsigned_itoa_base(unsigned int num, char *base);
+char		*ft_unsigned_itoa_base(unsigned long long num, char *base);
 
 #endif

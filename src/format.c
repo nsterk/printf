@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 20:21:31 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/15 16:14:44 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_tab			*format_precision(t_tab *tab)
 		else
 			return (tab);
 	}
-
 	if (tab->precision >= (int)ft_strlen(tab->argument))
 		format_num_precision(tab);
 	return (tab);
@@ -110,7 +109,7 @@ t_tab	*format_padding(t_tab *tab)
 		tab->argument = ft_strjoin(temp, padding_string);
 	else
 	{
-		if (tab->negative)
+		if (tab->negative && tab->zero)
 			tab->argument = ft_strjoin(padding_string, temp + 1);
 		else
 			tab->argument = ft_strjoin(padding_string, temp);

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 15:05:20 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 21:31:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/15 12:03:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,7 +323,5 @@ int		main(void)
 	/* CHARS ONLY */
 	
 	/* CRAPPY SHIT IN FORMAT STRING */
-
-	
 	return (0);
 }

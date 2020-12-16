@@ -6,20 +6,21 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 20:20:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 21:12:21 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 12:20:39 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <limits.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int		main(void)
 {
 	char	*str;
 	int		i;
-	int		ret;
-	int		ret2;
+	// int		ret;
+	// int		ret2;
 
 	str = "im the dog who gets beat";
 	i = 1;
@@ -35,9 +36,19 @@ int		main(void)
 	// if (ret != ret2)
 	// 	printf("\e[0;31mreturn value incorrect i = 1\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
 
-	ret = ft_printf("mine:	[%%-5c] [%5c]\n", 0);
-	ret2 = printf("real:	[%%-5c] [%5c]\n", 0);
-	if (ret != ret2)
-		printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+	// ret = ft_printf("mine:	[%%-5c] [%5c]\n", 0);
+	// ret2 = printf("real:	[%%-5c] [%5c]\n", 0);
+	// if (ret != ret2)
+	// 	printf("\e[0;31mreturn value incorrect\e[0m\nexpected: %i\nreceived: %i\n", ret2, ret);
+
+	// ft_printf("[%7d]\n", -14);
+	// printf("[%7d]\n", -14);
+	// ft_printf("%0-8.5d\n", 34);
+	// printf("%0-8.5d\n", 34);
+	i = 0;
+	ft_printf("[%p]\n", &i);
+	printf("[%p]\n", &i);
+	ft_printf("[%p]\n", str);
+	printf("[%p]\n", str);
 	return (0);
 }

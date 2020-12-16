@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 21:14:28 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/15 14:17:46 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int		print_argument(t_tab *tab)
 		ft_putstr_fd(tab->argument, 1);
 		tab->ret += (int)ft_strlen(tab->argument);
 	}
-	free(tab->argument);
+	if (tab->argument)
+		free(tab->argument);
 	re_initialize(tab);
 	return (tab->ret);
 }

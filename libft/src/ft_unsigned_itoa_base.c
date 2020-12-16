@@ -6,15 +6,15 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 11:03:04 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 21:13:19 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 13:25:40 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_unsigned_itoa_baselen(unsigned int num, int divider)
+static size_t	ft_unsigned_itoa_baselen(unsigned long long num, int divider)
 {
-	int len;
+	size_t len;
 
 	len = 0;
 	if (num == 0)
@@ -27,11 +27,11 @@ static int		ft_unsigned_itoa_baselen(unsigned int num, int divider)
 	return (len);
 }
 
-char			*ft_unsigned_itoa_base(unsigned int num, char *base)
+char			*ft_unsigned_itoa_base(unsigned long long num, char *base)
 {
 	char	*str;
-	int		divider;
-	int		len;
+	size_t	divider;
+	size_t	len;
 
 	divider = ft_strlen(base);
 	len = ft_unsigned_itoa_baselen(num, divider);

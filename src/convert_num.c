@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 13:06:04 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 13:41:21 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ t_tab	*convert_unsigned_int(t_tab *tab)
 	return (tab);
 }
 
-t_tab		*convert_hex(t_tab *tab)
+t_tab	*convert_hex(t_tab *tab)
 {
-	unsigned int	ui;
-	//printf("w to the idth %i\n", tab->width);
-	ui = va_arg(tab->args, unsigned int);
+	unsigned long ui;
+
+	ui = va_arg(tab->args, unsigned long);
 	if (*tab->format == 'x')
 	{
 		tab->specifier = 'x';
@@ -63,23 +63,22 @@ t_tab		*convert_hex(t_tab *tab)
 		tab->specifier = 'X';
 		tab->argument = ft_unsigned_itoa_base(ui, "0123456789ABCDEF");
 	}
+	if (!tab->argument)
+		return (NULL);
 	tab->numerical = 1;
 	return (tab);
 }
 
 t_tab	*convert_ptr(t_tab *tab)
 {
-	char			*str;
-	unsigned int	address;
+	char				*str;
+	unsigned long long	address;
 
-	address = va_arg(tab->args, unsigned int);
+	address = va_arg(tab->args, unsigned long long);
 	str = ft_unsigned_itoa_base(address, "0123456789abcdef");
 	if (!str)
 		return (NULL);
-	if (ft_strcmp("0", str))
-		tab->argument = ft_strjoin("0x10", str);
-	else
-		tab->argument = ft_strjoin("0x", str);
+	tab->argument = ft_strjoin("0x", str);
 	if (!tab->argument)
 		return (NULL);
 	tab->specifier = 'p';
