@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 20:20:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 12:20:39 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 15:07:34 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ int		main(void)
 	// printf("[%7d]\n", -14);
 	// ft_printf("%0-8.5d\n", 34);
 	// printf("%0-8.5d\n", 34);
-	i = 0;
-	ft_printf("[%p]\n", &i);
-	printf("[%p]\n", &i);
-	ft_printf("[%p]\n", str);
-	printf("[%p]\n", str);
+	i = -20;
+	ft_printf("[%.5i]\n", i);
+	ft_printf("[%10.5i]\n", i);
 	return (0);
 }

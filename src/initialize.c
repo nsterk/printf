@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:21:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/15 16:01:34 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 15:07:21 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_tab	*initialize(t_tab *tab)
 {
-	//tab->fcopy = (char *)tab->format;
-	tab->i = 0;
 	tab->flags = "-0";
 	tab->conversion_types = "%cspdiuxX";
 	tab->zero = 0;

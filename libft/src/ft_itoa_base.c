@@ -6,16 +6,16 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 19:24:23 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 13:20:00 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 14:26:24 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static int	itoa_base_len(long num, int divider)
+static size_t	itoa_base_len(long num, int divider)
 {
-	int len;
+	size_t len;
 
 	len = 0;
 	if (num == 0)
@@ -33,8 +33,8 @@ static int	itoa_base_len(long num, int divider)
 char			*ft_itoa_base(long num, char *base)
 {
 	char	*str;
-	int		divider;
-	int		len;
+	size_t	divider;
+	size_t	len;
 
 	divider = ft_strlen(base);
 	len = itoa_base_len(num, divider);

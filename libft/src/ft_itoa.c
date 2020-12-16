@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/29 11:03:04 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 17:38:13 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/16 15:05:37 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ char			*ft_itoa(int n)
 
 	long_n = (long)n;
 	len = ft_itoalen(long_n);
-	rstr = (char *)malloc(sizeof(*rstr) * (len + 1));
+	rstr = (char *)ft_calloc(len + 1, sizeof(*rstr));
 	if (!rstr)
 		return (NULL);
 	if (long_n == 0)
 		rstr[0] = '0';
-	rstr[len] = '\0';
 	if (long_n < 0)
 	{
 		long_n = -long_n;
