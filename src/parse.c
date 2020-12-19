@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 17:36:37 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:09:53 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int		get_precision(t_tab *tab)
 			return (-1);
 		tab->precision = ft_atoi(precision_string);
 		free(precision_string);
-		if (!tab->precision)
-			return (-1);
 		tab->format += i;
 	}
 	if (tab->precision < 0)

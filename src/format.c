@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 12:48:06 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 12:58:41 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ static char		*make_padding(t_tab *tab)
 	return (padding_string);
 }
 
-static int		format_num_precision(t_tab *tab)
+int		format_precision(t_tab *tab)
 {
 	char	*padding_string;
 	char	*temp;
 
+	if (tab->precision < (int)ft_strlen(tab->argument))
+		return (tab->ret);
 	padding_string = make_padding(tab);
 	temp = ft_strdup(tab->argument);
 	free(tab->argument);
@@ -46,13 +48,6 @@ static int		format_num_precision(t_tab *tab)
 	tab->negative = 0;
 	free(padding_string);
 	free(temp);
-	return (tab->ret);
-}
-
-int		format_precision(t_tab *tab)
-{
-	if (tab->precision >= (int)ft_strlen(tab->argument))
-		return (format_num_precision(tab));
 	return (tab->ret);
 }
 
@@ -93,6 +88,7 @@ int		format_padding(t_tab *tab)
 			tab->argument = ft_strjoin(padding_string, temp);
 	}
 	free(padding_string);
+	free(temp);
 	return (tab->ret);
 }
 
@@ -105,7 +101,7 @@ int			format(t_tab *tab)
 			free(tab->argument);
 			tab->argument = ft_calloc(1, sizeof(*tab->argument));
 		}
-		else
+		else if (tab->specifier != 's')
 			format_precision(tab);
 	}
 	if ((int)ft_strlen(tab->argument) < tab->width && tab->specifier != 'c')

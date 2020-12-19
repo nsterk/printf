@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 20:20:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 12:47:45 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:03:50 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 
 int		main(void)
 {
-	char	*str;
+	//char	*str;
 	int		i;
 	int		ret;
 	// int		ret2;
-	str = "im the dog who gets beat";
+	// str = "im the dog who gets beat";
 	i = 1;
-	i = -20;
-	ret = ft_printf("[%.5i]\n", i);
-	ret = ft_printf("[%10.5s]\n", str);
-	printf("[%10.5s]\n", str);
+	i = 0;
+	ret = ft_printf("[%.0d]\n", i);
+	// ft_printf("mine:	[%10.5s]\n", str);
+	// printf("real:	[%10.5s]\n", str);
+	// ft_printf("mine:	[%10.5i]\n", i);
+	// printf("real:	[%10.5i]\n", i);
 	return (0);
 }
