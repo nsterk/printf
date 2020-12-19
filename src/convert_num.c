@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 13:27:28 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:50:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		convert_int(t_tab *tab)
 	tab->argument = ft_itoa(i);
 	if (!tab->argument)
 		return (-1);
-	tab->numerical = 1;
 	return (tab->ret);
 }
 
@@ -38,7 +37,6 @@ int		convert_unsigned_int(t_tab *tab)
 	tab->argument = ft_unsigned_itoa_base(ui, "0123456789");
 	if (!tab->argument)
 		return (-1);
-	tab->numerical = 1;
 	tab->specifier = 'u';
 	return (tab->ret);
 }
@@ -60,7 +58,6 @@ int		convert_hex(t_tab *tab)
 	}
 	if (!tab->argument)
 		return (-1);
-	tab->numerical = 1;
 	return (tab->ret);
 }
 

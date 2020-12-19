@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 13:36:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:47:09 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		format_precision(t_tab *tab)
 	tab->negative = 0;
 	free(padding_string);
 	free(temp);
+	if (!tab->argument)
+		return (-1);
 	return (tab->ret);
 }
 
@@ -89,6 +91,8 @@ int		format_padding(t_tab *tab)
 	}
 	free(padding_string);
 	free(temp);
+	if (!tab->argument)
+		return (-1);
 	return (tab->ret);
 }
 
