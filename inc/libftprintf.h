@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 17:33:49 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/17 12:01:35 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int				convert_unsigned_int(t_tab *tab);
 int				convert_ptr(t_tab *tab);
 int				convert_string(t_tab *tab);
 int				format(t_tab *tab);
-t_tab			*format_padding(t_tab *tab);
+int				format_padding(t_tab *tab);
 t_tab			*format_width(t_tab *tab);
-t_tab			*format_precision(t_tab *tab);
+int				format_precision(t_tab *tab);
 int				print_char(t_tab *tab);
 int				print_argument(t_tab *tab);
 void			print_argument_char(t_tab *tab);

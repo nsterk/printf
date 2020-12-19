@@ -6,27 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/15 16:14:44 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 12:48:06 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-static t_tab	*format_string_precision(t_tab *tab)
-{
-	char	*temp;
-
-	temp = ft_strdup(tab->argument);
-	free(tab->argument);
-	if (!temp)
-		return (NULL);
-	tab->argument = ft_calloc(tab->precision + 1, sizeof(*temp));
-	if (!tab->argument)
-		return (NULL);
-	ft_strlcpy(tab->argument, temp, tab->precision + 1);
-	free(temp);
-	return (tab);
-}
 
 static char		*make_padding(t_tab *tab)
 {
@@ -45,18 +29,16 @@ static char		*make_padding(t_tab *tab)
 	return (padding_string);
 }
 
-static t_tab	*format_num_precision(t_tab *tab)
+static int		format_num_precision(t_tab *tab)
 {
 	char	*padding_string;
 	char	*temp;
 
 	padding_string = make_padding(tab);
-	if (!padding_string)
-		return (NULL);
 	temp = ft_strdup(tab->argument);
 	free(tab->argument);
-	if (!temp)
-		return (NULL);
+	if (!temp || !padding_string)
+		return (-1);
 	if (tab->negative)
 		tab->argument = ft_strjoin(padding_string, temp + 1);
 	else
@@ -64,24 +46,17 @@ static t_tab	*format_num_precision(t_tab *tab)
 	tab->negative = 0;
 	free(padding_string);
 	free(temp);
-	return (tab);
+	return (tab->ret);
 }
 
-t_tab			*format_precision(t_tab *tab)
+int		format_precision(t_tab *tab)
 {
-	if (tab->specifier == 's')
-	{
-		if (tab->precision < (int)ft_strlen(tab->argument))
-			return (format_string_precision(tab));
-		else
-			return (tab);
-	}
 	if (tab->precision >= (int)ft_strlen(tab->argument))
-		format_num_precision(tab);
-	return (tab);
+		return (format_num_precision(tab));
+	return (tab->ret);
 }
 
-t_tab	*format_padding(t_tab *tab)
+int		format_padding(t_tab *tab)
 {
 	char	*temp;
 	char	*padding_string;
@@ -90,13 +65,16 @@ t_tab	*format_padding(t_tab *tab)
 	temp = ft_strdup(tab->argument);
 	free(tab->argument);
 	if (!temp)
-		return (NULL);
+		return (-1);
 	padding_length = (size_t)tab->width - ft_strlen(temp);
 	if (tab->negative && tab->zero)
 		padding_length++;
 	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
 	if (!padding_string)
-		return (NULL);
+	{
+		free(temp);
+		return (-1);
+	}
 	if (tab->zero)
 	{
 		ft_memset(padding_string, '0', padding_length);
@@ -115,7 +93,7 @@ t_tab	*format_padding(t_tab *tab)
 			tab->argument = ft_strjoin(padding_string, temp);
 	}
 	free(padding_string);
-	return (tab);
+	return (tab->ret);
 }
 
 int			format(t_tab *tab)

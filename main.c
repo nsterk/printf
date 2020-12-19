@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/28 20:20:06 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 17:24:36 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 12:47:45 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(void)
 	i = 1;
 	i = -20;
 	ret = ft_printf("[%.5i]\n", i);
-	ret = ft_printf("[%10.5i]\n", i);
+	ret = ft_printf("[%10.5s]\n", str);
+	printf("[%10.5s]\n", str);
 	return (0);
 }

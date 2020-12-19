@@ -6,17 +6,17 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:02:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/15 16:08:47 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/17 12:28:40 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_tab	*convert_string(t_tab *tab)
+int		convert_string(t_tab *tab)
 {
 	char	*temp;
-	
-	tab->specifier = 's'; 
+
+	tab->specifier = 's';
 	temp = va_arg(tab->args, char *);
 	if (!tab->precision_bool)
 	{
@@ -33,11 +33,11 @@ t_tab	*convert_string(t_tab *tab)
 			tab->argument = ft_strndup(temp, (size_t)tab->precision + 1);
 	}
 	if (!tab->argument)
-		return (NULL);
-	return (tab);
+		return (-1);
+	return (tab->ret);
 }
 
-t_tab	*convert_char(t_tab *tab)
+int		convert_char(t_tab *tab)
 {
 	int c;
 
@@ -50,7 +50,7 @@ t_tab	*convert_char(t_tab *tab)
 		c = *tab->format;
 	tab->argument = ft_calloc(2, sizeof(unsigned char));
 	if (!tab->argument)
-		return (NULL);
+		return (-1);
 	ft_memset(tab->argument, c, 1);
-	return (tab);
+	return (tab->ret);
 }
