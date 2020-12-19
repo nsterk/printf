@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"ratio": "c"
+		"ratio": "c",
+		"ostream": "c",
+		"*.tcc": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/15 14:17:46 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:58:39 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,39 @@ void		print_argument_char(t_tab *tab)
 	int i;
 
 	i = 1;
-	if (tab->width > 1)
+	if (tab->left_justify)
 	{
-		if (tab->left_justify)
+		write(1, tab->argument, 1);
+		while (i < tab->width)
 		{
-			write(1, tab->argument, 1);
-			while (i < tab->width)
-			{
-				write(1, &" ", 1);
-				i++;
-			}
-		}
-		else
-		{
-			while (i < tab->width)
-			{
-				write(1, &" ", 1);
-				i++;
-			}
-			write(1, tab->argument, 1);
+			write(1, &" ", 1);
+			i++;
 		}
 	}
 	else
+	{
+		while (i < tab->width)
+		{
+			write(1, &" ", 1);
+			i++;
+		}
 		write(1, tab->argument, 1);
+	}
 	tab->ret += i;
 }
 
 int		print_argument(t_tab *tab)
 {
 	if (tab->specifier == 'c')
-		print_argument_char(tab);
+	{
+		if (tab->width > 1)
+			print_argument_char(tab);
+		else
+		{
+			write(1, tab->argument, 1);
+			tab->ret++;
+		}
+	}
 	else
 	{
 		ft_putstr_fd(tab->argument, 1);
