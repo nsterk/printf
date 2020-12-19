@@ -6,13 +6,13 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/16 17:30:47 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:27:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	convert_int(t_tab *tab)
+int		convert_int(t_tab *tab)
 {
 	int		i;
 
@@ -43,7 +43,7 @@ int		convert_unsigned_int(t_tab *tab)
 	return (tab->ret);
 }
 
-int	convert_hex(t_tab *tab)
+int		convert_hex(t_tab *tab)
 {
 	unsigned long ui;
 
@@ -64,7 +64,7 @@ int	convert_hex(t_tab *tab)
 	return (tab->ret);
 }
 
-int	convert_ptr(t_tab *tab)
+int		convert_ptr(t_tab *tab)
 {
 	char				*str;
 	unsigned long long	address;

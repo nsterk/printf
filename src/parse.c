@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 13:09:53 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:38:21 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,21 @@ int		parse_flags(t_tab *tab)
 	parse_zero_minus(tab);
 	if (*tab->format == '*' || (ft_isdigit(*tab->format)
 		&& *tab->format != '0'))
-		get_width(tab);
+		if (get_width(tab) < 0)
+			return (-1);
 	if (*tab->format == '.')
 	{
 		tab->format++;
-		get_precision(tab);
+		if (get_precision(tab) < 0)
+			return (-1);
 	}
 	if (tab->left_justify || tab->precision_bool)
 		tab->zero = 0;
-	parse_specifier(tab);
+	if (parse_specifier(tab) < 0)
+		return (-1);
+	tab->format++;
+	if (format(tab) < 0)
+		return (-1);
 	return (tab->ret);
 }
 
@@ -121,21 +127,17 @@ int		parse_specifier(t_tab *tab)
 		return (tab->ret);
 	}
 	if (*tab->format == 'i' || *tab->format == 'd')
-		if (convert_int(tab) < 0)
-			return (-1);
+		return (convert_int(tab));
 	if (*tab->format == 'u')
-		if (convert_unsigned_int(tab) < 0)
-			return (-1);
+		return (convert_unsigned_int(tab));
 	if (*tab->format == 'c' || *tab->format == '%')
-		convert_char(tab);
+		return (convert_char(tab));
 	if (*tab->format == 's')
-		convert_string(tab);
+		return (convert_string(tab));
 	if (*tab->format == 'p')
-		convert_ptr(tab);
+		return (convert_ptr(tab));
 	if (*tab->format == 'x' || *tab->format == 'X')
-		convert_hex(tab);
-	tab->format++;
-	format(tab);
+		return (convert_hex(tab));
 	return (tab->ret);
 }
 

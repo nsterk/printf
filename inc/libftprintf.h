@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/17 12:01:35 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:15:51 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef	struct	s_tab
 {
 	const char	*format;
 	va_list		args;
-	char		*flags;
 	char		*conversion_types;
 	char		*argument;
 	char		*padding;
@@ -43,8 +42,8 @@ typedef	struct	s_tab
 }				t_tab;
 
 int				ft_printf(const char *format, ...);
-t_tab			*initialize(t_tab *tab);
-t_tab			*re_initialize(t_tab *tab);
+void			initialize(t_tab *tab);
+void			re_initialize(t_tab *tab);
 int				get_width(t_tab *tab);
 int				get_precision(t_tab *tab);
 int				parse(t_tab *tab);

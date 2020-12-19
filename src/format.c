@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 12:58:41 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 13:36:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,12 @@ int			format(t_tab *tab)
 			tab->argument = ft_calloc(1, sizeof(*tab->argument));
 		}
 		else if (tab->specifier != 's')
-			format_precision(tab);
+			if (format_precision(tab) < 0)
+				return (-1);
 	}
 	if ((int)ft_strlen(tab->argument) < tab->width && tab->specifier != 'c')
-		format_padding(tab);
+		if (format_padding(tab) < 0)
+			return (-1);
 	print_argument(tab);
 	return (tab->ret);
 }
