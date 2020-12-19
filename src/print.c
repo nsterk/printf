@@ -6,14 +6,14 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 13:58:39 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/19 14:20:59 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
 
-void		print_argument_char(t_tab *tab)
+void	print_argument_char(t_tab *tab)
 {
 	int i;
 
