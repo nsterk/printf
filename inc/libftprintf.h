@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 14:07:20 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/21 15:59:39 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef	struct	s_tab
 	char		*padding;
 	int			left_justify;
 	int			zero;
+	int			space;
+	int			plus;
+	int			hash;
 	int			width;
 	int			precision;
 	int			precision_bool;
@@ -50,7 +53,8 @@ int				parse_specifier(t_tab *tab);
 int				parse_flags(t_tab *tab);
 void			parse_zero_minus(t_tab *tab);
 int				convert_char(t_tab *tab);
-int				convert_hex(t_tab *tab);
+int				convert_lowhex(t_tab *tab);
+int				convert_uphex(t_tab *tab);
 int				convert_int(t_tab *tab);
 int				convert_unsigned_int(t_tab *tab);
 int				convert_ptr(t_tab *tab);

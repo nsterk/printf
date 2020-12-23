@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/19 14:12:59 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 14:20:34 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/23 16:05:13 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	width_from_format(t_tab *tab)
 		return (-1);
 	tab->width = ft_atoi(width_string);
 	free(width_string);
-	tab->format += i;
+	tab->format += (i - 1);
 	return (tab->ret);
 }
 
@@ -33,7 +33,7 @@ int			get_width(t_tab *tab)
 {
 	if (*tab->format == '*')
 	{
-		tab->format++;
+		//tab->format++;
 		tab->width = va_arg(tab->args, int);
 		if (tab->width < 0)
 		{
@@ -55,6 +55,7 @@ static int	precision_from_format(t_tab *tab)
 	size_t	i;
 
 	i = 0;
+	tab->format++;
 	while (ft_isdigit(tab->format[i]))
 		i++;
 	precision_string = ft_substr(tab->format, 0, i);
@@ -62,20 +63,21 @@ static int	precision_from_format(t_tab *tab)
 		return (-1);
 	tab->precision = ft_atoi(precision_string);
 	free(precision_string);
-	tab->format += i;
+	tab->format += (i - 1);
 	return (tab->ret);
 }
 
 int			get_precision(t_tab *tab)
 {
-	if (*tab->format == '*')
+	//tab->format++;
+	if (tab->format[1] == '*')
 	{
 		tab->precision = va_arg(tab->args, int);
 		tab->format++;
 		if (tab->precision < 0)
 			return (tab->ret);
 	}
-	else if (ft_isdigit(*tab->format))
+	else if (ft_isdigit(tab->format[1]))
 	{
 		if (precision_from_format(tab) < 0)
 			return (-1);

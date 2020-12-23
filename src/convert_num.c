@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/19 13:50:28 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/21 14:29:03 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,45 +20,69 @@ int		convert_int(t_tab *tab)
 		tab->specifier = 'd';
 	if (*tab->format == 'i')
 		tab->specifier = 'i';
+	tab->format++;
 	i = va_arg(tab->args, int);
 	if (i < 0)
 		tab->negative = 1;
 	tab->argument = ft_itoa(i);
 	if (!tab->argument)
 		return (-1);
-	return (tab->ret);
+	return (1);
 }
 
 int		convert_unsigned_int(t_tab *tab)
 {
 	unsigned int ui;
 
+	tab->specifier = 'u';
+	tab->format++;
 	ui = va_arg(tab->args, unsigned int);
 	tab->argument = ft_unsigned_itoa_base(ui, "0123456789");
 	if (!tab->argument)
 		return (-1);
-	tab->specifier = 'u';
-	return (tab->ret);
+	return (1);
 }
 
-int		convert_hex(t_tab *tab)
+int		convert_lowhex(t_tab *tab)
 {
-	unsigned long ui;
+	unsigned long	ui;
+	char			*temp;
 
+	tab->specifier = 'x';
+	tab->format++;
 	ui = va_arg(tab->args, unsigned long);
-	if (*tab->format == 'x')
-	{
-		tab->specifier = 'x';
-		tab->argument = ft_unsigned_itoa_base(ui, "0123456789abcdef");
-	}
-	if (*tab->format == 'X')
-	{
-		tab->specifier = 'X';
-		tab->argument = ft_unsigned_itoa_base(ui, "0123456789ABCDEF");
-	}
+	temp = ft_unsigned_itoa_base(ui, "0123456789abcdef");
+	if (!temp)
+		return (-1);
+	if (tab->hash && ft_strchr("789abcdef", (int)*temp))
+		tab->argument = ft_strjoin("0x", temp);
+	else
+		tab->argument = ft_strdup(temp);
+	free(temp);
 	if (!tab->argument)
 		return (-1);
-	return (tab->ret);
+	return (1);
+}
+
+int		convert_uphex(t_tab *tab)
+{
+	unsigned long	ui;
+	char			*temp;
+
+	tab->specifier = 'X';
+	tab->format++;
+	ui = va_arg(tab->args, unsigned long);
+	temp = ft_unsigned_itoa_base(ui, "0123456789ABCDEF");
+	if (!temp)
+		return (-1);
+	if (tab->hash && ft_strchr("789ABCDEF", (int)*temp))
+		tab->argument = ft_strjoin("0X", temp);
+	else
+		tab->argument = ft_strdup(temp);
+	free(temp);
+	if (!tab->argument)
+		return (-1);
+	return (1);
 }
 
 int		convert_ptr(t_tab *tab)
@@ -67,6 +91,7 @@ int		convert_ptr(t_tab *tab)
 	unsigned long long	address;
 
 	tab->specifier = 'p';
+	tab->format++;
 	address = va_arg(tab->args, unsigned long long);
 	str = ft_unsigned_itoa_base(address, "0123456789abcdef");
 	if (!str)
@@ -75,5 +100,5 @@ int		convert_ptr(t_tab *tab)
 	free(str);
 	if (!tab->argument)
 		return (-1);
-	return (tab->ret);
+	return (1);
 }

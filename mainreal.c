@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 18:45:58 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/14 16:16:31 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/20 15:58:42 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int		main(void)
 
 	str = "test to the test test";
 	str2 = "en nu?";
-	i = 0;
+	i = 200;
 	//printf("\e[0;35mnumerical precision is 0\e[0m\n");
 	//ret = ft_printf("[%.0d]", 0);
-	printf("[%.s]\n", str);
-	printf("[%.i]\n", i);
+	printf("[%+5i] [%i]\n", i, -i);
+	printf("[%.i] [%i]\n", i, -i);
 	// ret = printf("[%c]", 0);
 	// printf("\nret: %i\n", ret);
 	//printf("\e[0;35mstring precision is 0\e[0m\n");

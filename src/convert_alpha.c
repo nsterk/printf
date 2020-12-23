@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:02:47 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/17 12:28:40 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/21 14:00:45 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		convert_string(t_tab *tab)
 {
 	char	*temp;
 
+	tab->format++;
 	tab->specifier = 's';
 	temp = va_arg(tab->args, char *);
 	if (!tab->precision_bool)
@@ -34,7 +35,7 @@ int		convert_string(t_tab *tab)
 	}
 	if (!tab->argument)
 		return (-1);
-	return (tab->ret);
+	return (1);
 }
 
 int		convert_char(t_tab *tab)
@@ -48,9 +49,10 @@ int		convert_char(t_tab *tab)
 	}
 	else
 		c = *tab->format;
+	tab->format++;
 	tab->argument = ft_calloc(2, sizeof(unsigned char));
 	if (!tab->argument)
 		return (-1);
 	ft_memset(tab->argument, c, 1);
-	return (tab->ret);
+	return (1);
 }
