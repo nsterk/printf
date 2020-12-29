@@ -6,13 +6,13 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/29 14:41:20 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 17:12:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	parse_flags(t_tab *tab)
+int					parse_flags(t_tab *tab)
 {
 	if (*tab->format == '-')
 		tab->left_justify = 1;
@@ -32,67 +32,69 @@ int	parse_flags(t_tab *tab)
 	return (tab->ret);
 }
 
-static void	handle_flags(t_tab *tab)
+static void			find_len_modifier(t_tab *tab)
 {
-	if (tab->left_justify || tab->precision_bool)
-		tab->zero = 0;
-	if (tab->plus)
-		tab->space = 0;
-}
-
-static void	find_len_modifier(t_tab *tab)
-{
-	if (ft_strchr("lh", *tab->format))
+	if (*tab->format == 'h')
 	{
-		if (*tab->format == 'h')
+		if (tab->format[1] == 'h')
 		{
-			if (tab->format[1] == 'h')
-			{
-				tab->lenmod = 1;
-				tab->format++;
-			}
-			else
-				tab->lenmod = 2;
+			tab->lenmod = 1;
+			tab->format++;
 		}
 		else
+			tab->lenmod = 2;
+		tab->format++;
+	}
+	else if (*tab->format == 'l')
+	{
+		if (tab->format[1] == 'l')
 		{
-			if (tab->format[1] == 'l')
-			{
-				tab->lenmod = 3;
-				tab->format++;
-			}
-			else
-				tab->lenmod = 4;
+			tab->lenmod = 3;
+			tab->format++;
 		}
+		else
+			tab->lenmod = 4;
 		tab->format++;
 	}
 }
 
-int		conversion_type(t_tab *tab)
+static t_convert	convert_argument(char specifier)
 {
+	static const t_convert convert[255] = {
+		['i'] = &convert_int,
+		['d'] = &convert_int,
+		['u'] = &convert_unsigned_int,
+		['c'] = &convert_char,
+		['%'] = &convert_char,
+		['s'] = &convert_string,
+		['p'] = &convert_ptr,
+		['x'] = &convert_lowhex,
+		['X'] = &convert_uphex,
+	};
+
+	return (convert[(unsigned int)specifier]);
+}
+
+int					conversion_type(t_tab *tab)
+{
+	t_convert	convert;
+
 	find_len_modifier(tab);
-	if (ft_strchr(tab->conversion_types, *tab->format))
+	if (ft_strchr("%cspdiuxX", *tab->format))
 	{
-		handle_flags(tab);
-		if (*tab->format == 'i' || *tab->format == 'd')
-			return (convert_int(tab));
-		else if (*tab->format == 'u')
-			return (convert_unsigned_int(tab));
-		else if (*tab->format == 'c' || *tab->format == '%')
-			return (convert_char(tab));
-		else if (*tab->format == 's')
-			return (convert_string(tab));
-		else if (*tab->format == 'p')
-			return (convert_ptr(tab));
-		else if (*tab->format == 'x')
-			return (convert_lowhex(tab));
-		else if (*tab->format == 'X')
-			return (convert_uphex(tab));
+		if (tab->left_justify || tab->precision_bool)
+			tab->zero = 0;
+		if (tab->plus)
+			tab->space = 0;
+		convert = convert_argument(*tab->format);
+		if (convert(tab) < 0)
+			return (-1);
+		return (1);
 	}
 	return (0);
 }
 
-int		parse(t_tab *tab)
+int					parse(t_tab *tab)
 {
 	int		c_check;
 

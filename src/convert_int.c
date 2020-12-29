@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/28 16:53:13 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 18:18:33 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static unsigned long long	get_unsigned_int(t_tab *tab)
 	return (n);
 }
 
-int					convert_int(t_tab *tab)
+int							convert_int(t_tab *tab)
 {
 	long long	n;
 	char		*temp;
@@ -74,7 +74,7 @@ int					convert_int(t_tab *tab)
 	return (1);
 }
 
-int					convert_unsigned_int(t_tab *tab)
+int							convert_unsigned_int(t_tab *tab)
 {
 	unsigned long long n;
 

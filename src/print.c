@@ -6,14 +6,14 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:13:36 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/28 14:09:27 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 18:18:01 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
 
-static void	print_argument_char(t_tab *tab)
+static void		print_argument_char(t_tab *tab)
 {
 	int i;
 
@@ -39,7 +39,7 @@ static void	print_argument_char(t_tab *tab)
 	tab->ret += i;
 }
 
-int		print_argument(t_tab *tab)
+int				print_argument(t_tab *tab)
 {
 	if (tab->specifier == 'c')
 	{
@@ -62,7 +62,7 @@ int		print_argument(t_tab *tab)
 	return (tab->ret);
 }
 
-int		print_char(t_tab *tab)
+int				print_char(t_tab *tab)
 {
 	write(1, tab->format, 1);
 	tab->ret++;
