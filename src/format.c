@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/21 15:57:54 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 14:53:53 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,50 @@
 
 static char		*make_precision_padding(t_tab *tab)
 {
-	int		padding_length;
+	int		len;
 	char	*padding_string;
 
-	padding_length = tab->precision - (int)ft_strlen(tab->argument);
-	if (tab->negative)
-		padding_length += 2;
-	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
+	len = tab->precision - (int)ft_strlen(tab->argument);
+	if (tab->hash && ft_strcmp("0", tab->argument))
+		len += 4;
+	else if (tab->plus)
+		len += 2;
+	padding_string = ft_calloc(len + 1, sizeof(*padding_string));
 	if (!padding_string)
 		return (NULL);
-	ft_memset(padding_string, '0', padding_length);
-	if (tab->negative)
-		padding_string[0] = '-';
+	ft_memset(padding_string, '0', len);
+	if (tab->plus)
+		padding_string[0] = tab->argument[0];
+	else if (tab->hash && ft_strcmp("0", tab->argument))
+		padding_string[1] = tab->argument[1];
 	return (padding_string);
 }
 
 static char		*make_width_padding(t_tab *tab)
 {
-	int		padding_length;
+	int		len;
 	char	*padding_string;
 
-	padding_length = tab->width - (int)ft_strlen(tab->argument);
-	if (tab->negative && tab->zero)
-		padding_length++;
-	padding_string = ft_calloc(padding_length + 1, sizeof(*padding_string));
+	len = tab->width - (int)ft_strlen(tab->argument);
+	if (tab->plus && tab->zero)
+		len++;
+	if (tab->hash && tab->zero)
+		len += 2;
+	padding_string = ft_calloc(len + 1, sizeof(*padding_string));
 	if (!padding_string)
 		return (NULL);
 	if (tab->zero)
 	{
-		ft_memset(padding_string, '0', padding_length);
-		if (tab->negative)
-			padding_string[0] = '-';
+		ft_memset(padding_string, '0', len);
+		if (tab->plus)
+			padding_string[0] = tab->argument[0];
 		else if (tab->space)
 			padding_string[0] = ' ';
-		else if (tab->plus)
-			padding_string[0] = '+';
+		else if (tab->hash)
+			padding_string[1] = tab->argument[1];
 	}
 	else
-	{
-		ft_memset(padding_string, ' ', padding_length);
-		if (tab->plus && !tab->negative)
-			padding_string[padding_length - 1] = '+';
-	}
+		ft_memset(padding_string, ' ', len);
 	return (padding_string);
 }
 
@@ -71,11 +73,13 @@ int				format_precision(t_tab *tab)
 	free(tab->argument);
 	if (!temp || !padding_string)
 		return (-1);
-	if (tab->negative)
+	if (tab->hash)
+		tab->argument = ft_strjoin(padding_string, temp + 2);
+	else if (tab->plus)
 		tab->argument = ft_strjoin(padding_string, temp + 1);
 	else
 		tab->argument = ft_strjoin(padding_string, temp);
-	tab->negative = 0;
+	tab->plus = 0;
 	free(padding_string);
 	free(temp);
 	if (!tab->argument)
@@ -91,14 +95,16 @@ int				format_width(t_tab *tab)
 	padding_string = make_width_padding(tab);
 	temp = ft_strdup(tab->argument);
 	free(tab->argument);
-	if (!temp || !temp)
+	if (!temp)
 		return (-1);
 	if (tab->left_justify)
 		tab->argument = ft_strjoin(temp, padding_string);
 	else
 	{
-		if (tab->negative && tab->zero)
+		if (tab->plus && tab->zero)
 			tab->argument = ft_strjoin(padding_string, temp + 1);
+		else if (tab->hash && tab->zero)
+			tab->argument = ft_strjoin(padding_string, temp + 2);
 		else
 			tab->argument = ft_strjoin(padding_string, temp);
 	}
@@ -113,10 +119,15 @@ int				format(t_tab *tab)
 {
 	if (tab->precision_bool)
 	{
-		if (!ft_strcmp(tab->argument, "0") && !tab->precision)
+		if (!tab->precision)
 		{
-			free(tab->argument);
-			tab->argument = ft_calloc(1, sizeof(*tab->argument));
+			if (tab->plus && !ft_strcmp(tab->argument + 1, "0"))
+				tab->argument[1] = '\0';
+			else if (!ft_strcmp(tab->argument, "0"))
+			{
+				free(tab->argument);
+				tab->argument = ft_calloc(1, sizeof(*tab->argument));
+			}
 		}
 		else if (tab->specifier != 's')
 			if (format_precision(tab) < 0)

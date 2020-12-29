@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/21 14:03:14 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 14:41:20 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	parse_flags(t_tab *tab)
 		return (get_width(tab));
 	else if (*tab->format == '.')
 		return (get_precision(tab));
-	//tab->format++;
 	return (tab->ret);
 }
 
@@ -41,8 +40,37 @@ static void	handle_flags(t_tab *tab)
 		tab->space = 0;
 }
 
+static void	find_len_modifier(t_tab *tab)
+{
+	if (ft_strchr("lh", *tab->format))
+	{
+		if (*tab->format == 'h')
+		{
+			if (tab->format[1] == 'h')
+			{
+				tab->lenmod = 1;
+				tab->format++;
+			}
+			else
+				tab->lenmod = 2;
+		}
+		else
+		{
+			if (tab->format[1] == 'l')
+			{
+				tab->lenmod = 3;
+				tab->format++;
+			}
+			else
+				tab->lenmod = 4;
+		}
+		tab->format++;
+	}
+}
+
 int		conversion_type(t_tab *tab)
 {
+	find_len_modifier(tab);
 	if (ft_strchr(tab->conversion_types, *tab->format))
 	{
 		handle_flags(tab);
@@ -73,14 +101,11 @@ int		parse(t_tab *tab)
 	while (*tab->format)
 	{
 		c_check = conversion_type(tab);
-		if (c_check)
-		{
-			if (c_check < 0)
-				return (-1);
-			else
-				return (format(tab));
-		}
-		if ((c_check = parse_flags(tab)) < 0)
+		if (c_check < 0)
+			return (-1);
+		else if (c_check > 0)
+			return (format(tab));
+		if (parse_flags(tab) < 0)
 			return (-1);
 		tab->format++;
 	}

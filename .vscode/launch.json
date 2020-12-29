@@ -11,7 +11,7 @@
 			"name": "Debug",
 			"program": "/Users/NaomiSterk/codam/in progress/printf",
 			"args": ["/Users/NaomiSterk/codam/in progress/printf/src", "/Users/NaomiSterk/codam/in progress/printf/libft/src"],
-			"cwd": "/Users/NaomiSterk/codam/in progress/"
+			"cwd": "/Users/NaomiSterk/codam/in progress"
 		}
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/19 14:12:59 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/23 16:05:13 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/28 14:36:00 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			get_width(t_tab *tab)
 {
 	if (*tab->format == '*')
 	{
-		//tab->format++;
 		tab->width = va_arg(tab->args, int);
 		if (tab->width < 0)
 		{
@@ -69,7 +68,6 @@ static int	precision_from_format(t_tab *tab)
 
 int			get_precision(t_tab *tab)
 {
-	//tab->format++;
 	if (tab->format[1] == '*')
 	{
 		tab->precision = va_arg(tab->args, int);

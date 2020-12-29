@@ -2,6 +2,7 @@
 	"files.associations": {
 		"ratio": "c",
 		"ostream": "c",
-		"*.tcc": "c"
+		"*.tcc": "c",
+		"libftprintf.h": "c"
 	}
 }
