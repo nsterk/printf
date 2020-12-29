@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/28 22:34:36 by nsterk        ########   odam.nl          #
+#    Updated: 2020/12/29 18:26:18 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,13 @@ CFLAGS		=	-Wall -Werror -Wextra -g -Iinc
 LIBFT_PATH	=	./libft/src/
 LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_isspace.c ft_isdigit.c \
-				ft_itoa.c ft_itoa_base.c \
-				ft_putchar_fd.c \
-				ft_putnbr_fd.c ft_putstr_fd.c \
-				ft_memcpy.c ft_memset.c \
-				ft_strchr.c ft_strcmp.c ft_strncmp.c \
+				ft_itoa_base.c ft_unsigned_itoa_base.c \
+				ft_putchar_fd.c ft_putstr_fd.c \
+				ft_memset.c \
+				ft_strchr.c ft_strcmp.c \
 				ft_strcpy.c ft_strlcpy.c \
 				ft_strdup.c ft_strndup.c ft_strjoin.c \
-				ft_strlen.c ft_strnlen.c \
-				ft_substr.c ft_tolower.c \
-				ft_toupper.c ft_reverse_string.c \
-				ft_unsigned_itoa_base.c
+				ft_strlen.c ft_substr.c
 LIBFT_OBJ	=	$(LIBFT_SRC:%.c=%.o)
 
 PRINTF_PATH	=	./src/

@@ -6,13 +6,13 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:55:21 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/29 17:12:28 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 19:05:55 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int					parse_flags(t_tab *tab)
+static int			parse_flags(t_tab *tab)
 {
 	if (*tab->format == '-')
 		tab->left_justify = 1;

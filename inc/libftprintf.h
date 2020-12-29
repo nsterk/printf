@@ -6,21 +6,15 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/29 18:13:55 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 19:09:08 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-**	DON'T FORGET:
-**	remove unused library headers like stdio.h
-*/
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "libft.h"
 
 typedef	struct	s_tab
