@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:01:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/28 15:52:46 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/30 13:04:33 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	re_initialize(t_tab *tab)
 {
+	tab->arg_len = 0;
 	tab->left_justify = 0;
 	tab->zero = 0;
 	tab->space = 0;

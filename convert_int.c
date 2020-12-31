@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/29 18:18:33 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/30 17:35:31 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,22 @@ int							convert_int(t_tab *tab)
 	long long	n;
 	char		*temp;
 
-	n = get_signed_int(tab);
-	if (*tab->format == 'd')
-		tab->specifier = 'd';
-	if (*tab->format == 'i')
-		tab->specifier = 'i';
+	tab->specifier = 'd';
 	tab->format++;
+	n = get_signed_int(tab);
 	temp = ft_itoa_base(n, "0123456789");
 	if (!temp)
 		return (-1);
-	if (tab->plus && *temp != '-')
-		tab->argument = ft_strjoin("+", temp);
-	else if (tab->space && *temp != '-')
-		tab->argument = ft_strjoin(" ", temp);
-	else
+	tab->arg_len = ft_strlen(temp);
+	if (*temp == '-')
+	{
 		tab->argument = ft_strdup(temp);
+		tab->arg_len--;
+	}
+	else if (tab->plus)
+		tab->argument = ft_strjoin("+", temp);
+	else if (tab->space)
+		tab->argument = ft_strjoin(" ", temp);
 	free(temp);
 	if (!tab->argument)
 		return (-1);

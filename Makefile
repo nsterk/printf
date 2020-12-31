@@ -6,19 +6,17 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/29 18:26:18 by nsterk        ########   odam.nl          #
+#    Updated: 2020/12/30 17:28:01 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
-# dont forget to remove -g in CFLAGS 
 
 NAME		=	libftprintf.a
 HEADER		=	libftprintf.h
 CC			=	gcc
 RM			=	rm -f
-CFLAGS		=	-Wall -Werror -Wextra -g -Iinc
+CFLAGS		=	-Wall -Werror -Wextra -g
 
-LIBFT_PATH	=	./libft/src/
+LIBFT_PATH	=	./libft/
 LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_isspace.c ft_isdigit.c \
 				ft_itoa_base.c ft_unsigned_itoa_base.c \
@@ -29,8 +27,8 @@ LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
 				ft_strdup.c ft_strndup.c ft_strjoin.c \
 				ft_strlen.c ft_substr.c
 LIBFT_OBJ	=	$(LIBFT_SRC:%.c=%.o)
+LIBFT_OP	=	$(LIBFT_OBJ:%=$(LIBFT_PATH)%)
 
-PRINTF_PATH	=	./src/
 PRINTF_SRC	=	initialize.c ft_printf.c \
 				parse.c get_field_specs.c format.c \
 				convert_alpha.c convert_int.c \
@@ -38,10 +36,7 @@ PRINTF_SRC	=	initialize.c ft_printf.c \
 				re_initialize.c print.c
 PRINTF_OBJ	=	$(PRINTF_SRC:%.c=%.o)
 
-PRINTF_OP	=	$(PRINTF_OBJ:%=$(PRINTF_PATH)%)
-LIBFT_OP	=	$(LIBFT_OBJ:%=$(LIBFT_PATH)%)
-
-OBJ_FILES	=	$(PRINTF_OP) $(LIBFT_OP)
+OBJ_FILES	=	$(PRINTF_OBJ) $(LIBFT_OP)
 
 all:		$(NAME)
 
@@ -63,7 +58,6 @@ fclean: clean
 
 re: fclean all
 
-bonus:
-		$(MAKE) WITH_BONUS=1 all
+bonus:		$(NAME)
 
-.PHONY: all clean fclean re bonus test bonustest
+.PHONY: all clean fclean re bonus test
