@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/30 17:35:31 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/30 19:41:53 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static long long			get_signed_int(t_tab *tab)
 	else if (tab->lenmod == 3)
 		n = va_arg(tab->args, long long);
 	else
-		n = (long long)va_arg(tab->args, int);
+		n = (long long)va_arg(tab->args, long);
 	return (n);
 }
 
@@ -42,7 +42,7 @@ static unsigned long long	get_unsigned_int(t_tab *tab)
 	else if (tab->lenmod == 3)
 		n = va_arg(tab->args, unsigned long long);
 	else
-		n = (unsigned long long)va_arg(tab->args, unsigned int);
+		n = (unsigned long long)va_arg(tab->args, unsigned long);
 	return (n);
 }
 
@@ -51,22 +51,21 @@ int							convert_int(t_tab *tab)
 	long long	n;
 	char		*temp;
 
-	tab->specifier = 'd';
-	tab->format++;
 	n = get_signed_int(tab);
+	if (*tab->format == 'd')
+		tab->specifier = 'd';
+	if (*tab->format == 'i')
+		tab->specifier = 'i';
+	tab->format++;
 	temp = ft_itoa_base(n, "0123456789");
 	if (!temp)
 		return (-1);
-	tab->arg_len = ft_strlen(temp);
-	if (*temp == '-')
-	{
-		tab->argument = ft_strdup(temp);
-		tab->arg_len--;
-	}
-	else if (tab->plus)
+	if (tab->plus && *temp != '-')
 		tab->argument = ft_strjoin("+", temp);
-	else if (tab->space)
+	else if (tab->space && *temp != '-')
 		tab->argument = ft_strjoin(" ", temp);
+	else
+		tab->argument = ft_strdup(temp);
 	free(temp);
 	if (!tab->argument)
 		return (-1);

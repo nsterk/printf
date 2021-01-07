@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/30 17:28:01 by nsterk        ########   odam.nl          #
+#    Updated: 2020/12/30 19:20:08 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,4 +60,4 @@ re: fclean all
 
 bonus:		$(NAME)
 
-.PHONY: all clean fclean re bonus test
+.PHONY: all clean fclean re bonus

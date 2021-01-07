@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/19 10:23:15 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/30 17:43:45 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/07 19:01:24 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static char		*make_precision_padding(t_tab *tab)
 	int		len;
 	char	*padding;
 
-	len = tab->precision - tab->arg_len;
-	if (tab->hash && ft_strcmp("0", tab->argument))
+	len = tab->precision - (int)ft_strlen(tab->argument);
+	if (tab->hash)
 		len += 4;
 	else if (tab->plus)
 		len += 2;
@@ -28,7 +28,7 @@ static char		*make_precision_padding(t_tab *tab)
 	ft_memset(padding, '0', len);
 	if (tab->plus)
 		padding[0] = tab->argument[0];
-	else if (tab->hash && ft_strcmp("0", tab->argument))
+	else if (tab->hash)
 		padding[1] = tab->argument[1];
 	return (padding);
 }
@@ -38,11 +38,11 @@ static char		*make_width_padding(t_tab *tab)
 	int		len;
 	char	*padding;
 
-	len = tab->width - ft_strlen(tab->argument);
-	// if (tab->plus && tab->zero)
-	// 	len++;
-	// if (tab->hash && tab->zero)
-	// 	len += 2;
+	len = tab->width - (int)ft_strlen(tab->argument);
+	if (tab->plus && tab->zero)
+		len++;
+	if (tab->hash && tab->zero)
+		len += 2;
 	padding = ft_calloc(len + 1, sizeof(*padding));
 	if (!padding)
 		return (NULL);
@@ -66,12 +66,10 @@ static int		format_precision(t_tab *tab)
 	char	*padding;
 	char	*temp;
 
-	if (tab->precision < tab->arg_len)
-		return (tab->ret);
 	temp = ft_strdup(tab->argument);
 	padding = make_precision_padding(tab);
 	free(tab->argument);
-	if (!temp || !temp)
+	if (!temp || !padding)
 		return (-1);
 	if (tab->hash)
 		tab->argument = ft_strjoin(padding, temp + 2);
@@ -117,17 +115,20 @@ static int		format_width(t_tab *tab)
 
 int				format(t_tab *tab)
 {
-	if (!tab->precision)
+	if (tab->precision_bool)
 	{
-		if (tab->plus && !ft_strcmp(tab->argument + 1, "0"))
-			tab->argument[1] = '\0';
-		else if (!ft_strcmp(tab->argument, "0"))
-			tab->argument[0] = '\0';
-	}
-	else if (tab->precision > 0)
-	{
-		if (format_precision(tab) < 0)
-			return (-1);
+		if (!tab->precision)
+		{
+			if (tab->plus && !ft_strcmp(tab->argument + 1, "0"))
+				tab->argument[1] = '\0';
+			else if (!ft_strcmp(tab->argument, "0"))
+				tab->argument[0] = '\0';
+		}
+		else if (tab->precision >= (int)ft_strlen(tab->argument))
+		{
+			if (format_precision(tab) < 0)
+				return (-1);
+		}
 	}
 	if ((int)ft_strlen(tab->argument) < tab->width && tab->specifier != 'c')
 		if (format_width(tab) < 0)

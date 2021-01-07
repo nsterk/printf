@@ -6,16 +6,17 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 19:34:01 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/11/28 17:38:13 by nsterk        ########   odam.nl         */
+/*   Updated: 2020/12/29 19:59:16 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*	Removed checks from original ft_substr relating to size len compared 
-**	to size of s, since I know that when used for printf this won't be an issue.
-**	And I'm afraid otherwise there might be a risk for overflow rendering the
-**	comparison invalid, in case of really long tab->format string.
+/*
+** Removed checks from original ft_substr relating to size len compared
+** to size of s, since I know that when used for printf this won't be an issue.
+** And I'm afraid otherwise there might be a risk for overflow rendering the
+** comparison invalid, in case of really long tab->format string.
 */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
