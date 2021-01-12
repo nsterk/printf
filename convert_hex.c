@@ -6,28 +6,11 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/01/12 14:35:23 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/12 16:38:02 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-// static unsigned long long	get_unsigned(t_tab *tab)
-// {
-// 	unsigned long long n;
-
-// 	if (!tab->lenmod)
-// 		n = (unsigned long long)va_arg(tab->args, unsigned int);
-// 	else if (tab->lenmod == 1)
-// 		n = (unsigned char)va_arg(tab->args, unsigned int);
-// 	else if (tab->lenmod == 2)
-// 		n = (unsigned short)va_arg(tab->args, unsigned int);
-// 	else if (tab->lenmod == 3)
-// 		n = (unsigned long long)va_arg(tab->args, unsigned long);
-// 	else
-// 		n = va_arg(tab->args, unsigned long long);
-// 	return (n);
-// }
 
 int							convert_lowhex(t_tab *tab)
 {

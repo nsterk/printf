@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2021/01/12 14:37:08 by nsterk        ########   odam.nl          #
+#    Updated: 2021/01/12 14:46:35 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	libftprintf.a
 HEADER		=	libftprintf.h
 CC			=	gcc
 RM			=	rm -f
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra
 
 LIBFT_PATH	=	./libft/
 LIBFT_SRC	= 	ft_atoi.c ft_bzero.c ft_calloc.c \
@@ -45,10 +45,6 @@ $(NAME):	$(OBJ_FILES)
 
 %.o: %.c	$(HEADER)
 		$(CC) -c $(CFLAGS) -o $@ $<
-
-test: re
-		$(CC) $(CFLAGS) main.c libftprintf.a -o printf
-		./printf
 
 clean:
 		$(RM) $(OBJ_FILES)
