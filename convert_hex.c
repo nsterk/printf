@@ -6,19 +6,36 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/01/07 16:57:33 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/12 14:35:23 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		convert_lowhex(t_tab *tab)
+// static unsigned long long	get_unsigned(t_tab *tab)
+// {
+// 	unsigned long long n;
+
+// 	if (!tab->lenmod)
+// 		n = (unsigned long long)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 1)
+// 		n = (unsigned char)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 2)
+// 		n = (unsigned short)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 3)
+// 		n = (unsigned long long)va_arg(tab->args, unsigned long);
+// 	else
+// 		n = va_arg(tab->args, unsigned long long);
+// 	return (n);
+// }
+
+int							convert_lowhex(t_tab *tab)
 {
 	char			*temp;
 
 	tab->specifier = 'x';
 	tab->format++;
-	temp = ft_unsigned_itoa_base(va_arg(tab->args, unsigned long),
+	temp = ft_unsigned_itoa_base(get_unsigned(tab),
 	"0123456789abcdef");
 	if (!temp)
 		return (-1);
@@ -35,13 +52,13 @@ int		convert_lowhex(t_tab *tab)
 	return (1);
 }
 
-int		convert_uphex(t_tab *tab)
+int							convert_uphex(t_tab *tab)
 {
 	char			*temp;
 
 	tab->specifier = 'X';
 	tab->format++;
-	temp = ft_unsigned_itoa_base(va_arg(tab->args, unsigned long),
+	temp = ft_unsigned_itoa_base(get_unsigned(tab),
 	"0123456789ABCDEF");
 	if (!temp)
 		return (-1);
@@ -58,7 +75,7 @@ int		convert_uphex(t_tab *tab)
 	return (1);
 }
 
-int		convert_ptr(t_tab *tab)
+int							convert_ptr(t_tab *tab)
 {
 	char		*str;
 

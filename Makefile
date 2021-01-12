@@ -6,7 +6,7 @@
 #    By: nsterk <nsterk@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 11:29:07 by nsterk        #+#    #+#                  #
-#    Updated: 2020/12/30 19:20:08 by nsterk        ########   odam.nl          #
+#    Updated: 2021/01/12 14:37:08 by nsterk        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_OP	=	$(LIBFT_OBJ:%=$(LIBFT_PATH)%)
 PRINTF_SRC	=	initialize.c ft_printf.c \
 				parse.c get_field_specs.c format.c \
 				convert_alpha.c convert_int.c \
-				convert_hex.c \
+				convert_hex.c get_argument.c \
 				re_initialize.c print.c
 PRINTF_OBJ	=	$(PRINTF_SRC:%.c=%.o)
 

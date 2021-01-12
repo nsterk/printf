@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 19:49:08 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/30 19:37:05 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/12 14:36:28 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ int				convert_unsigned_int(t_tab *tab);
 int				convert_ptr(t_tab *tab);
 int				convert_string(t_tab *tab);
 typedef int		(*t_convert)(t_tab *tab);
+
+long long			get_signed(t_tab *tab);
+unsigned long long	get_unsigned(t_tab *tab);
 
 /*
 ** Formatting + printing functions.

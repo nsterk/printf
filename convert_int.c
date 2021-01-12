@@ -6,58 +6,56 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/14 13:04:53 by nsterk        #+#    #+#                 */
-/*   Updated: 2020/12/30 19:41:53 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/12 14:35:49 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static long long			get_signed_int(t_tab *tab)
-{
-	long long n;
+// static long long			get_signed_int(t_tab *tab)
+// {
+// 	long long n;
 
-	if (!tab->lenmod)
-		n = (long long)va_arg(tab->args, int);
-	else if (tab->lenmod == 1)
-		n = (char)va_arg(tab->args, int);
-	else if (tab->lenmod == 2)
-		n = (short)va_arg(tab->args, int);
-	else if (tab->lenmod == 3)
-		n = va_arg(tab->args, long long);
-	else
-		n = (long long)va_arg(tab->args, long);
-	return (n);
-}
+// 	if (!tab->lenmod)
+// 		n = (long long)va_arg(tab->args, int);
+// 	else if (tab->lenmod == 1)
+// 		n = (char)va_arg(tab->args, int);
+// 	else if (tab->lenmod == 2)
+// 		n = (short)va_arg(tab->args, int);
+// 	else if (tab->lenmod == 3)
+// 		n = va_arg(tab->args, long long);
+// 	else
+// 		n = (long long)va_arg(tab->args, long);
+// 	return (n);
+// }
 
-static unsigned long long	get_unsigned_int(t_tab *tab)
-{
-	unsigned long long n;
+// static unsigned long long	get_unsigned_int(t_tab *tab)
+// {
+// 	unsigned long long n;
 
-	if (!tab->lenmod)
-		n = (unsigned long long)va_arg(tab->args, unsigned int);
-	else if (tab->lenmod == 1)
-		n = (unsigned char)va_arg(tab->args, unsigned int);
-	else if (tab->lenmod == 2)
-		n = (unsigned short)va_arg(tab->args, unsigned int);
-	else if (tab->lenmod == 3)
-		n = va_arg(tab->args, unsigned long long);
-	else
-		n = (unsigned long long)va_arg(tab->args, unsigned long);
-	return (n);
-}
+// 	if (!tab->lenmod)
+// 		n = (unsigned long long)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 1)
+// 		n = (unsigned char)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 2)
+// 		n = (unsigned short)va_arg(tab->args, unsigned int);
+// 	else if (tab->lenmod == 3)
+// 		n = (unsigned long long)va_arg(tab->args, unsigned long);
+// 	else
+// 		n = va_arg(tab->args, unsigned long long);
+// 	return (n);
+// }
 
 int							convert_int(t_tab *tab)
 {
-	long long	n;
 	char		*temp;
 
-	n = get_signed_int(tab);
 	if (*tab->format == 'd')
 		tab->specifier = 'd';
 	if (*tab->format == 'i')
 		tab->specifier = 'i';
 	tab->format++;
-	temp = ft_itoa_base(n, "0123456789");
+	temp = ft_itoa_base(get_signed(tab), "0123456789");
 	if (!temp)
 		return (-1);
 	if (tab->plus && *temp != '-')
@@ -76,12 +74,9 @@ int							convert_int(t_tab *tab)
 
 int							convert_unsigned_int(t_tab *tab)
 {
-	unsigned long long n;
-
-	n = get_unsigned_int(tab);
 	tab->specifier = 'u';
 	tab->format++;
-	tab->argument = ft_unsigned_itoa_base(n, "0123456789");
+	tab->argument = ft_unsigned_itoa_base(get_unsigned(tab), "0123456789");
 	if (!tab->argument)
 		return (-1);
 	return (1);
