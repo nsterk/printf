@@ -6,7 +6,7 @@
 /*   By: nsterk <nsterk@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 20:32:00 by nsterk        #+#    #+#                 */
-/*   Updated: 2021/01/12 19:49:44 by nsterk        ########   odam.nl         */
+/*   Updated: 2021/01/12 20:03:55 by nsterk        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int		ft_printf(const char *format, ...)
 		{
 			tab->format++;
 			if (parse(tab) < 0)
-			{
-				free(tab);
 				return (-1);
-			}
 		}
 		else
 			tab->ret = print_char(tab);
